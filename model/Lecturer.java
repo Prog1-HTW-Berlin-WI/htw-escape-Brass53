@@ -1,9 +1,9 @@
+import java.io.Serializable;
+
 /**
+ * Klasse für Dozenten um seriellisiert zu werden.
  * @author Berkant
  */
-
-
-import java.io.Serializable;
 
 public class Lecturer implements Serializable {
 

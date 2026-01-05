@@ -1,9 +1,9 @@
+import java.io.Serializable;
+
 /**
+ * Klasse für HTW Räume um seriellisiert zu werden.
  * @author Berkant
  */
-
-
-import java.io.Serializable;
 
 public class HTWRoom implements Serializable {
 

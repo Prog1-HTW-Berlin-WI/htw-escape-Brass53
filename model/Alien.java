@@ -1,4 +1,5 @@
 /**
+ * Klasse für Aliens serielle Speicherung.
  * @author Berkant
  */
 

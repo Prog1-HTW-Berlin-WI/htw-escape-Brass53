@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 /**
+ * Klasse zum Starten und Verwalten des Spiels.
  * @author Berkant
  */
 
@@ -29,6 +30,9 @@ public class EscapeApp {
         }
     }
 
+    /**
+     * Zeigt die optionen im Hauptmenü an.
+     */
     private void showMainMenu() {
         System.out.println("You're in the main menu");
         System.out.println("What do you want to do next?");
@@ -38,6 +42,10 @@ public class EscapeApp {
         System.out.println("Please choose a number between 1 and 6: ");
     }
 
+    /**
+     * liest die eingabe des benutzers.
+     * @return gibt die eingabe des nutzers zurück.
+     */
     private String readUserInput() {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
@@ -45,6 +53,10 @@ public class EscapeApp {
         return userInput;
     }
 
+    /**
+     * Settzt die eingabe des benutzers um.
+     * @param input eingabe des benutzers.
+     */
     private void handleUserInput(String input) {
         switch (input) {
             case "1":
@@ -61,22 +73,34 @@ public class EscapeApp {
         }
     }
 
+    /**
+     * Staartet ein neues spiel.
+     */
     private void startGame() {
         this.game = new EscapeGame();
         resumeGame();
     }
 
+    /**
+     * fährt mit dem aktellen spiel fort
+     */
     private void resumeGame() {
         this.game.setGameRunning(true);
         this.game.run();
     }
 
+    /**
+     * löscht das gespeicherte spiel.
+     */
     private void deleteGame() {
         if (new File(SAVE_FILE_NAME).delete()) {
             System.out.println("Game deleted!");
         }
     }
 
+    /**
+     * speichert das aktuelle spiel.
+     */
     private void saveGame() {
         try (FileOutputStream fos = new FileOutputStream(SAVE_FILE_NAME);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -89,6 +113,9 @@ public class EscapeApp {
         System.out.println("Game saved!");
     }
 
+    /**
+     * lädt ein gespeichertes spiel.
+     */
     private void loadGame() {
         try (FileInputStream fis = new FileInputStream(SAVE_FILE_NAME);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -99,14 +126,26 @@ public class EscapeApp {
         }
     }
 
+    /**
+     * prüft ob ein spiel läuft.
+     * @return true wenn ein spiel läuft, sonst false.
+     */
     private boolean isGameRunning() {
         return game != null;
     }
 
+    /**
+     * prüft ob das spiel beendet ist.
+     * @return true wenn das spiel beendet ist, sonst false.
+     */
     private boolean isGameFinished() {
         return game != null && game.isGameFinished();
     }
 
+    /**
+     * prüft ob ein gespeichertes spiel existiert.
+     * @return true wenn ein gespeichertes spiel existiert, sonst false.
+     */
     private boolean hasSavedGame() {
         return new File(SAVE_FILE_NAME).exists();
     }
