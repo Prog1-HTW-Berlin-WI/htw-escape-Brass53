@@ -1,6 +1,8 @@
-package model;
+/**
+ * @author Berkant
+ */
 
-import java.io.Serial;
+
 import java.io.Serializable;
 
 public class HTWRoom implements Serializable {

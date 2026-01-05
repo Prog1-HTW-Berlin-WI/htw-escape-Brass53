@@ -1,4 +1,7 @@
-package model;
+/**
+ * @author Berkant
+ */
+
 
 import java.io.Serializable;
 

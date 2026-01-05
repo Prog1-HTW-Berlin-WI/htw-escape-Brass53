@@ -1,4 +1,7 @@
-package model;
+/**
+ * @author Berkant
+ */
+
 
 public abstract class Alien {
 

@@ -1,7 +1,11 @@
-package app;
 
 import model.Hero;
 import model.HTWRoom;
+
+/**
+ * @author Berkant
+ */
+
 
 public class EscapeGame {
     private final Hero hero;
