@@ -2,8 +2,8 @@ import java.io.Serializable;
 
 /**
  * Klasse für den helden des spiels um seriellisiert zu werden.
- * @author Berkant
- */
+ * @author Berkant Kaygan
+ * @author Luca Weber */
 
 public class Hero implements Serializable {
 

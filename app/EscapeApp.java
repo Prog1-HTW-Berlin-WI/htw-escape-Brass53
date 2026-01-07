@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 /**
  * Klasse zum Starten und Verwalten des Spiels.
- * @author Berkant
+ * @author Berkant Kaygan
+ * @author Luca Weber
  */
 
 public class EscapeApp {

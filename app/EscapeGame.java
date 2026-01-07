@@ -4,7 +4,8 @@ import model.HTWRoom;
 
 /**
  * Klasse der Haupteil des Escape Games.
- * @author Berkant
+ * @author Berkant Kaygan
+ * @author Luca Weber
  */
 
 

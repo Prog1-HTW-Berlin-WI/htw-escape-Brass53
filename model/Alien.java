@@ -1,6 +1,7 @@
 /**
  * Klasse für Aliens serielle Speicherung.
- * @author Berkant
+ * @author Berkant Kaygan
+ * @author Luca Weber
  */
 
 

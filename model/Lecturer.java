@@ -2,8 +2,9 @@ import java.io.Serializable;
 
 /**
  * Klasse für Dozenten um seriellisiert zu werden.
- * @author Berkant
- */
+ * @author Berkant Kaygan
+ * @author Luca Weber
+ *  */
 
 public class Lecturer implements Serializable {
 

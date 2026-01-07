@@ -2,8 +2,8 @@ import java.io.Serializable;
 
 /**
  * Klasse für HTW Räume um seriellisiert zu werden.
- * @author Berkant
- */
+ * @author Berkant Kaygan
+ * @author Luca Weber */
 
 public class HTWRoom implements Serializable {
 
