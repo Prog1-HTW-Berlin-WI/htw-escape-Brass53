@@ -27,6 +27,7 @@ public class EscapeApp {
         while (true) {
             app.showMainMenu();
             String choice = app.readUserInput();
+            app.clearConsole();
             app.handleUserInput(choice);
             System.out.println("====================");
         }
@@ -62,6 +63,14 @@ public class EscapeApp {
         String userInput = scanner.nextLine();
         // TBD
         return userInput;
+    }
+
+
+    /**
+     * Fügt 50 Leerzeilen ein, um die Konsole zu "löschen".
+     */
+    private void clearConsole(){
+        for (int i = 0; i < 50; ++i) System.out.println();
     }
 
     /**
