@@ -114,7 +114,7 @@ public class EscapeApp {
     }
 
     /**
-     * Staartet ein neues spiel.
+     * Startet ein neues spiel.
      */
     private void startGame() {
         this.game = new EscapeGame();
@@ -165,6 +165,12 @@ public class EscapeApp {
             System.err.println("Something went wrong while loading the game: " + ex.getMessage());
         }
     }
+
+    /**
+     * quit game methode her hier hinzufgen ?
+     *
+     */
+
 
     /**
      * prüft ob ein spiel läuft.
