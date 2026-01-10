@@ -1,7 +1,7 @@
 
 import model.Hero;
 import model.HTWRoom;
-import java.io.Serializable; 
+//import java.io.Serializable; 
 /*Konnte ich nur mit Ki lösen; laden und speichern haben exception geworfen, nachdem
 * ich die serializable schnittstelle hinzugefügt habe, wie auch bei der Hero Klasse, hat es geklappt. Muss nochmal
 * durchgegangen werden, warum das so ist.*/
@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 
 
-public class EscapeGame implements Serializable { //
+public class EscapeGame /*implements Serializable*/ { 
     private final Hero hero;
     private final HTWRoom[] rooms = new HTWRoom[3];
     private boolean gameRunning = true;
