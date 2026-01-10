@@ -21,9 +21,9 @@ public class Hero implements Serializable {
 
 
     /**
-     * RNG für die Fluchtchance.
+     * RNG für zufallszahlen.
      */
-    private final Random fleechance = new Random();
+    private final Random random = new Random();
 
 
 
@@ -60,7 +60,7 @@ public class Hero implements Serializable {
      */
 
 
-    private void  regenerate(boolean longRest){
+    private void regenerate(boolean longRest){
         int heal;
 
         if(longRest == true){
@@ -94,16 +94,78 @@ public class Hero implements Serializable {
 
 
     private boolean flee(){
-        int chance = this.fleechance.nextInt(100);
+        int chance = this.random.nextInt(100);
         return chance < 42;
     }
 
     /**
-     * attack metthode um einen gegner anzugreifen.
-     * @param enemy gegner der angegriffen wird.
+     * Angrriff hat eine 13 % chance zu verfehlen und 12 % chance für einen kritischen treffer.
+     * badsdamge wird durch erfahrungspunkte skaliert.
+     * @return schaden der verursacht wurde.
      */
 
-    
+    private int attack(){
+        double baseDamage = experiencePoints * 2.3 + 1;
+        int rollToHit = this.random.nextInt(100);
 
+        if(rollToHit < 13){
+            System.out.println("Attack missed!");
+            return 0;
+        }
+
+        if(rollToHit > 87){
+            System.out.println("Critical hit!");
+            baseDamage = baseDamage * 2;
+        }
+
+        return (int)baseDamage;
+    }
+
+/**
+ * Lecturer wird in leere stelle des arrays signedExerciseLeaders eingetragen.
+ * wwenn der lecturer schon eingetragen ist, passiert nichts.
+ * @param lecturer der lecturer der eingetragen werden soll.
+ */
+private void signExerciseLeader(Lecturer lecturer){
+    for(int i = 0; i < signedExerciseLeaders.length; i++){
+        if(signedExerciseLeaders[i] == null){
+            signedExerciseLeaders[i] = lecturer;
+            break;
+        }
+        else if(signedExerciseLeaders[i].equals(lecturer)){
+            break;
+        }
+    }
 
 }
+
+
+/**
+ * Gibt die aktuellen Erfahrungspunkte zurück.
+ * @return die aktuellen Erfahrungspunkte.
+ */
+public int getExperiencePoints() {
+    return experiencePoints;
+
+/**
+ * Fügt Erfahrungspunkte hinzu.
+ * @param experiencePoints die hinzuzufügenden Erfahrungspunkte.
+ * 
+ * variable experiencePoints muss definiert werden !!!
+ */
+
+private void addExperiencePoints(int experiencePoints){
+    this.experiencePoints += experiencePoints;
+}
+
+
+/**
+ * Prüft ob der Held noch Lebenspunkte hat.
+ * @return true wenn der Held noch Lebenspunkte hat, sonst false.
+ */
+
+public boolean isOperational() {
+    return this.healthpoints > 0;
+
+}
+
