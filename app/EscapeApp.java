@@ -40,15 +40,18 @@ public class EscapeApp {
         System.out.println("You're in the main menu");
         System.out.println("What do you want to do next?");
         System.out.println("(1) Start new game");
-        if(isGameRunning()){
+        if(true == isGameRunning()){
             System.out.println("(2) Resume game");
-            System.out.println("(4) Save game");
         }
-        if(hasSavedGame()){
+        if(true == hasSavedGame()){
             System.out.println("(3) Load game");
+        }
+        if(true == isGameRunning()){
+            System.out.println("(4) Sve game");
+        }
+        if(true == hasSavedGame()){
             System.out.println("(5) Delete saved game");
         }
-
         System.out.println("(6) Quit");
         System.out.println("");
         System.out.println("Please choose a number between 1 and 6: ");
@@ -83,16 +86,24 @@ public class EscapeApp {
                 this.startGame();
                 break;
             case "2":
-                this.resumeGame();
+                if(true == isGameRunning()){
+                    this.resumeGame();
+                }  
                 break;
             case "3":
-                this.loadGame();
+                if(true == hasSavedGame()){
+                    this.loadGame();
+                }
                 break;
             case "4":
-                this.saveGame();
+                if(true == isGameRunning()){
+                    this.saveGame();
+                }
                 break;
             case "5":
-                this.deleteGame();
+                if(true == hasSavedGame()){
+                    this.deleteGame();
+                }
                 break;
             case "6":
                 break;
