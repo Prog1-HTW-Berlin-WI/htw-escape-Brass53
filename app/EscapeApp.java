@@ -106,6 +106,7 @@ public class EscapeApp {
                 }
                 break;
             case "6":
+                this.quitGame();
                 break;
             default:
                 System.out.println("Invalid input. Please choose a correct number between 1 and 6");
@@ -167,10 +168,12 @@ public class EscapeApp {
     }
 
     /**
-     * quit game methode her hier hinzufgen ?
-     *
+     *      * Verabschiedet und beendet das spiel
      */
-
+    private void quitGame(){
+        System.out.println("Thanks for playing Bye!");
+        System.exit(0);
+    }
 
     /**
      * prüft ob ein spiel läuft.
