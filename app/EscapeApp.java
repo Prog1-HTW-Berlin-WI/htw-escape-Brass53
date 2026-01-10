@@ -47,7 +47,7 @@ public class EscapeApp {
             System.out.println("(3) Load game");
         }
         if(true == isGameRunning()){
-            System.out.println("(4) Sve game");
+            System.out.println("(4) Save game");
         }
         if(true == hasSavedGame()){
             System.out.println("(5) Delete saved game");
@@ -168,7 +168,7 @@ public class EscapeApp {
     }
 
     /**
-     *      * Verabschiedet und beendet das spiel
+     * Verabschiedet und beendet das spiel
      */
     private void quitGame(){
         System.out.println("Thanks for playing Bye!");
