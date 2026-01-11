@@ -145,7 +145,7 @@ private void signExerciseLeader(Lecturer lecturer){
  * @return die aktuellen Erfahrungspunkte.
  */
 public int getExperiencePoints() {
-    return experiencePoints;
+    return this.experiencePoints;
 
 /**
  * Fügt Erfahrungspunkte hinzu.
