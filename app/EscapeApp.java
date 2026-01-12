@@ -17,20 +17,32 @@ public class EscapeApp {
     private EscapeGame game;
     private boolean gameRunning = true;
 
+
     public static void main(String[] args) {
         System.out.println("Welcome to the HTW escape");
         System.out.println("========================================\n");
 
         EscapeApp app = new EscapeApp();
+        EscapeGame gameMenu = new EscapeGame();
+        
 
 
-        while (true) {
+
+        while (!app.isGameRunning()) {
             app.showMainMenu();
             String choice = app.readUserInput();
             app.clearConsole();
             app.handleUserInput(choice);
             System.out.println("====================");
         }
+
+        // creates hero and ask for name
+
+        // start game menü
+
+
+
+      
     }
 
     /**

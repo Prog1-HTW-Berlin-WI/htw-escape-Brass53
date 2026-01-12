@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Hero implements Serializable {
 
-    private String name = "Blank";
+    private String name;
     private int healthpoints;
     private int experiencePoints;
     private Lecturer[] signedExerciseLeaders;
@@ -35,6 +35,12 @@ public class Hero implements Serializable {
     /**
      * Konstruktor für den Helden.
      */
+    public Hero(){
+        this.name = "Blank Hero";
+        this.healthpoints = 50;
+        this.experiencePoints = 0;
+        this.signedExerciseLeaders = new Lecturer[Signatures_Slots];
+    }
 
 
     /**
@@ -65,7 +71,7 @@ public class Hero implements Serializable {
 
         if(longRest == true){
             heal = 10;
-            this.round += 1;
+            this.round += 1; // fehlt noch !!!
         }
         else{
             if(smallRestUsed == false){
@@ -121,51 +127,91 @@ public class Hero implements Serializable {
         return (int)baseDamage;
     }
 
-/**
- * Lecturer wird in leere stelle des arrays signedExerciseLeaders eingetragen.
- * wwenn der lecturer schon eingetragen ist, passiert nichts.
- * @param lecturer der lecturer der eingetragen werden soll.
- */
-private void signExerciseLeader(Lecturer lecturer){
-    for(int i = 0; i < signedExerciseLeaders.length; i++){
-        if(signedExerciseLeaders[i] == null){
-            signedExerciseLeaders[i] = lecturer;
-            break;
+    /**
+     * Lecturer wird in leere stelle des arrays signedExerciseLeaders eingetragen.
+     * wwenn der lecturer schon eingetragen ist, passiert nichts.
+     * @param lecturer der lecturer der eingetragen werden soll.
+     */
+    private void signExerciseLeader(Lecturer lecturer){
+        for(int i = 0; i < signedExerciseLeaders.length; i++){
+            if(signedExerciseLeaders[i] == null){
+                signedExerciseLeaders[i] = lecturer;
+                break;
+            }
+            else if(signedExerciseLeaders[i].equals(lecturer)){
+                break;
+            }
         }
-        else if(signedExerciseLeaders[i].equals(lecturer)){
-            break;
-        }
+
+
     }
 
+    /**
+     * Gibt die aktuellen Erfahrungspunkte zurück.
+    * @return die aktuellen Erfahrungspunkte.
+    */
+    public int getExperiencePoints() {
+        return this.experiencePoints;
+    }
+
+    /**
+     * Fügt Erfahrungspunkte hinzu.
+     * @param experiencePoints die hinzuzufügenden Erfahrungspunkte.
+     * 
+     * variable experiencePoints muss definiert werden !!!
+     */
+
+    private void addExperiencePoints(int xp){
+        this.experiencePoints += xp;
+    }
+
+
+    /**
+     * Prüft ob der Held noch Lebenspunkte hat.
+     * @return true wenn der Held noch Lebenspunkte hat, sonst false.
+     */
+
+    public boolean isOperational() {
+        return this.healthpoints > 0;
+
+    }
+
+    //getter für name, healthpoints, signedExerciseLeaders experiencePoints
+    public String getName() {
+        return this.name;
+    }
+
+    public int getHealthpoints() {
+        return this.healthpoints;
+    }
+
+    public Lecturer[] getSignedExerciseLeaders() {
+        return this.signedExerciseLeaders;
+    }
+
+    public int getExperience() {
+        return this.experiencePoints;
+    }
+
+    //setter für name, healthpoints, signedExerciseLeaders experiencePoints
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHealthpoints(int healthpoints) {
+        this.healthpoints = healthpoints;
+    }
+
+    public void setExperiencePoints(int experiencePoints) {
+        this.experiencePoints = experiencePoints;
+    }
+
+    public void setSignedExerciseLeaders(Lecturer[] signedExerciseLeaders) {
+        this.signedExerciseLeaders = signedExerciseLeaders;
+    }
+
+    
+
+
 }
-
-
-/**
- * Gibt die aktuellen Erfahrungspunkte zurück.
- * @return die aktuellen Erfahrungspunkte.
- */
-public int getExperiencePoints() {
-    return this.experiencePoints;
-
-/**
- * Fügt Erfahrungspunkte hinzu.
- * @param experiencePoints die hinzuzufügenden Erfahrungspunkte.
- * 
- * variable experiencePoints muss definiert werden !!!
- */
-
-private void addExperiencePoints(int experiencePoints){
-    this.experiencePoints += experiencePoints;
-}
-
-
-/**
- * Prüft ob der Held noch Lebenspunkte hat.
- * @return true wenn der Held noch Lebenspunkte hat, sonst false.
- */
-
-public boolean isOperational() {
-    return this.healthpoints > 0;
-
-}
-
