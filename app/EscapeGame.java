@@ -45,6 +45,7 @@ public class EscapeGame implements Serializable {
         System.out.println("What do you want to do next?");
         System.out.println("");
         System.out.println("=== Game Menu ===");
+        //Methode hinzufügen -> getRoundsPlayed()
         System.out.println("Round: " + hero.getRoundsPlayed());
         System.out.println("1. Exlore College");
         System.out.println("2. Show Hero Status");

@@ -100,21 +100,33 @@ public class EscapeApp {
             case "2":
                 if(true == isGameRunning()){
                     this.resumeGame();
-                }  
+                }
+                else{
+                    System.out.println("No game is currently running to resume.");
+                }
                 break;
             case "3":
                 if(true == hasSavedGame()){
                     this.loadGame();
+                }
+                else{
+                    System.out.println("No saved game found to load.");
                 }
                 break;
             case "4":
                 if(true == isGameRunning()){
                     this.saveGame();
                 }
+                else{
+                    System.out.println("No game is currently running to save.");
+                }
                 break;
             case "5":
                 if(true == hasSavedGame()){
                     this.deleteGame();
+                }
+                else{
+                    System.out.println("No saved game found to delete.");
                 }
                 break;
             case "6":
