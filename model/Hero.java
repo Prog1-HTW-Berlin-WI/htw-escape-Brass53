@@ -101,7 +101,14 @@ public class Hero implements Serializable {
 
     private boolean flee(){
         int chance = this.random.nextInt(100);
-        return chance < 42;
+        if (chance < 42){
+            System.out.println("You successfully fled the battle!");
+            return true;
+        }
+        else{
+            System.out.println("Flee attempt failed!");
+            return false;
+        }
     }
 
     /**
@@ -111,7 +118,7 @@ public class Hero implements Serializable {
      */
 
     private int attack(){
-        double baseDamage = experiencePoints * 2.3 + 1;
+        double baseDamage = this.experiencePoints * 2.3 + 1;
         int rollToHit = this.random.nextInt(100);
 
         if(rollToHit < 13){
@@ -134,16 +141,14 @@ public class Hero implements Serializable {
      */
     private void signExerciseLeader(Lecturer lecturer){
         for(int i = 0; i < signedExerciseLeaders.length; i++){
-            if(signedExerciseLeaders[i] == null){
+            if(signedExerciseLeaders[i].equals(lecturer)){
+                break;
+            }
+            else if(signedExerciseLeaders[i] == null){
                 signedExerciseLeaders[i] = lecturer;
                 break;
             }
-            else if(signedExerciseLeaders[i].equals(lecturer)){
-                break;
-            }
         }
-
-
     }
 
     /**
