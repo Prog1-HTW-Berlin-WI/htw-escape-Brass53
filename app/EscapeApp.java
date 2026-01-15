@@ -28,7 +28,7 @@ public class EscapeApp {
 
 
 
-        while (!app.isGameRunning()) {
+        while (true) {
             app.showMainMenu();
             String choice = app.readUserInput();
             app.clearConsole();
@@ -46,14 +46,14 @@ public class EscapeApp {
     }
 
     /**
-     * Zeigt die optionen im Hauptmenü an.
+     * Zeit die optionen im Hauptmenü an.
      */
     private void showMainMenu() {
         System.out.println("You're in the main menu");
         System.out.println("What do you want to do next?");
         System.out.println("(1) Start new game");
         if(true == isGameRunning()){
-            System.out.println("(2) Resume game");
+            System.out.println("(2) Resume game"); //läuft nicht wenn istGameRunning false ist. gameExists methode hinzufügen (gameExists = true)
         }
         if(true == hasSavedGame()){
             System.out.println("(3) Load game");
