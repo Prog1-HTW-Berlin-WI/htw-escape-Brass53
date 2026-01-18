@@ -21,6 +21,7 @@ public class HTWRoom implements Serializable {
     private HTWRoom[] rooms = new HTWRoom[24];
     private Random randomNumber = new Random();
     private boolean[]viseteddRooms = new boolean[24];
+    
 
     public HTWRoom(String identifier, String description, Lecturer lecturer) {
         this.identifier = identifier;

@@ -23,6 +23,8 @@ public class EscapeGame implements Serializable {
     
     Scanner scanner1 = new Scanner(System.in);
 
+
+
     public EscapeGame(Hero hero){
         this.hero = hero;
     }
@@ -130,7 +132,6 @@ public class EscapeGame implements Serializable {
         int currentRound = hero.getRoundsPlayed();
         System.out.println("Exploring the college... This is round " + currentRound + ". You have (24 - " + currentRound + ") rounds left.");
         System.out.println("");
-        //System.out.println("While exploring you stumble in : ." + );
     
         System.out.println("====================");
 
