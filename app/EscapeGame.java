@@ -6,7 +6,6 @@ import model.HTWRoom;
 import model.Hero; 
 
 
-
 /**
  * Klasse der Haupteil des Escape Games.
  * @author Berkant Kaygan
@@ -42,13 +41,12 @@ public class EscapeGame implements Serializable {
         System.out.println("What do you want to do next?");
         System.out.println("");
         System.out.println("=== Game Menu ===");
-        //Methode hinzufügen -> getRoundsPlayed()
-        System.out.println("Round: " + hero.getRoundsPlayed());
+        System.out.println("Round: " + (hero.getRoundsPlayed() + 1));
         System.out.println("1. Exlore College");
         System.out.println("2. Show Hero Status");
         System.out.println("3. Check Routing sheet");
         System.out.println("4. Take a break");
-        System.out.println("5.Quit Game");
+        System.out.println("5. Quit Game");
         System.out.println("");
         System.out.println("Please choose a number between 1 and 5: ");
 
@@ -63,6 +61,7 @@ public class EscapeGame implements Serializable {
     public void handleGameMenuInput(String choice){
         switch (choice) {
             case "1":
+                exploreCollege();
                 break;
             case "2":
                 break;
@@ -80,7 +79,17 @@ public class EscapeGame implements Serializable {
     }
 
 
+    public void exploreCollege(){
+        hero.increaseRoundsPlayed();
+        int currentRound = hero.getRoundsPlayed();
+        System.out.println("Exploring the college... This is round " + currentRound + ". You have (24 - currentRound) rounds left.");
 
+        if (currentRound >= 24) {
+            System.out.println("Your Time is up! You are stuck here and who knows what will happen to you...");
+            setGameFinished(true);
+            setGameRunning(false);
+        }
+    }
 
 
     /**
@@ -129,6 +138,7 @@ public class EscapeGame implements Serializable {
         while (isGameRunning()) {
             printGameMenu();
             String choice = scanner1.nextLine();
+            EscapeApp.clearConsole();
             handleGameMenuInput(choice);
         }
 

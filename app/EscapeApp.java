@@ -85,7 +85,7 @@ public class EscapeApp {
     /**
      * Fügt 50 Leerzeilen ein, um die Konsole zu "löschen".
      */
-    private void clearConsole(){
+    public static void clearConsole(){
         for (int i = 0; i < 50; ++i) System.out.println();
     }
 
