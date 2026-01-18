@@ -27,14 +27,12 @@ public class EscapeApp {
         System.out.println("========================================\n");
 
     EscapeApp app = new EscapeApp();
-        
-
-
+    
 
         while (true) {
             app.showMainMenu();
             String choice = app.readUserInput();
-            app.clearConsole();
+            clearConsole();
             app.handleUserInput(choice);
             System.out.println("====================");
         }
@@ -42,9 +40,6 @@ public class EscapeApp {
         // creates hero and ask for name
 
         // start game menü
-
-
-
       
     }
 
@@ -55,13 +50,13 @@ public class EscapeApp {
         System.out.println("You're in the main menu");
         System.out.println("What do you want to do next?");
         System.out.println("(1) Start new game");
-        if(true == isGameRunning()){
+        if(this.game != null){
             System.out.println("(2) Resume game"); //läuft nicht wenn istGameRunning false ist. gameExists methode hinzufügen (gameExists = true)
         }
         if(true == hasSavedGame()){
             System.out.println("(3) Load game");
         }
-        if(true == isGameRunning()){
+        if(this.game != null){
             System.out.println("(4) Save game");
         }
         if(true == hasSavedGame()){
@@ -99,7 +94,7 @@ public class EscapeApp {
                 this.startGame();
                 break;
             case "2":
-                if(true == isGameRunning()){
+                if(this.game != null){
                     this.resumeGame();
                 }
                 else{
@@ -115,7 +110,7 @@ public class EscapeApp {
                 }
                 break;
             case "4":
-                if(true == isGameRunning()){
+                if(this.game != null){
                     this.saveGame();
                 }
                 else{

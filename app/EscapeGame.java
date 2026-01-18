@@ -70,6 +70,7 @@ public class EscapeGame implements Serializable {
             case "4":
                 break;
             case "5":
+                setGameRunning(false);
                 break;
             default:
                 System.out.println("Invalid choice Try again.");
