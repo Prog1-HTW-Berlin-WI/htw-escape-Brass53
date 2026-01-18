@@ -1,3 +1,6 @@
+package app;
+
+import model.Hero;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,14 +19,14 @@ public class EscapeApp {
     public static final String SAVE_FILE_NAME = "save";
     private EscapeGame game;
     private boolean gameRunning = true;
+    private final Scanner scanner = new Scanner(System.in);
 
 
     public static void main(String[] args) {
         System.out.println("Welcome to the HTW escape");
         System.out.println("========================================\n");
 
-        EscapeApp app = new EscapeApp();
-        EscapeGame gameMenu = new EscapeGame();
+    EscapeApp app = new EscapeApp();
         
 
 
@@ -74,9 +77,7 @@ public class EscapeApp {
      * @return gibt die eingabe des nutzers zurück.
      */
     private String readUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
-        // TBD
+        String userInput = this.scanner.nextLine();
         return userInput;
     }
 
@@ -142,7 +143,20 @@ public class EscapeApp {
      * Startet ein neues spiel.
      */
     private void startGame() {
-        this.game = new EscapeGame();
+        System.out.println("Starting a new game...");
+        System.out.println("Please enter your hero's name: ");
+        String name = readUserInput();
+
+        if(name == null || name.trim().isEmpty()){
+            name = "Blank";
+        }
+        
+        Hero hero = new Hero();
+        hero.setName(name.trim());
+
+
+        this.game = new EscapeGame(hero);
+        System.out.println("Welcome " + hero.getName() + "! Your adventure begins now."); 
         resumeGame();
     }
 
@@ -196,6 +210,10 @@ public class EscapeApp {
      */
     private void quitGame(){
         System.out.println("Thanks for playing Bye!");
+        // close shared scanner and exit
+        try {
+            this.scanner.close();
+        } catch (Exception ignored) {}
         System.exit(0);
     }
 
@@ -204,7 +222,8 @@ public class EscapeApp {
      * @return true wenn ein spiel läuft, sonst false.
      */
     private boolean isGameRunning() {
-        return game != null;
+        return game != null && game.isGameRunning()
+        ;
     }
 
     /**

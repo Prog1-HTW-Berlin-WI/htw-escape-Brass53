@@ -1,3 +1,4 @@
+package model;
 import java.io.Serializable;
 import java.util.Random;
 
@@ -13,8 +14,8 @@ public class Hero implements Serializable {
     private int healthpoints;
     private int experiencePoints;
     private Lecturer[] signedExerciseLeaders;
+    private int roundsPlayed;
 
-    private int roundsPlayed = 1;
     private boolean smallRestUsed = false;
 
     private static final int Max_HP = 50;
@@ -41,6 +42,7 @@ public class Hero implements Serializable {
         this.healthpoints = 50;
         this.experiencePoints = 0;
         this.signedExerciseLeaders = new Lecturer[Signatures_Slots];
+        this.roundsPlayed = 0;
     }
 
 
@@ -72,7 +74,7 @@ public class Hero implements Serializable {
 
         if(longRest == true){
             heal = 10;
-            this.round += 1; // fehlt noch !!!
+            this.roundsPlayed += 1;
         }
         else{
             if(smallRestUsed == false){
@@ -187,6 +189,10 @@ public class Hero implements Serializable {
         return this.name;
     }
 
+    public int getRoundsPlayed() {
+        return this.roundsPlayed;
+    }
+
     public int getHealthpoints() {
         return this.healthpoints;
     }
@@ -218,12 +224,6 @@ public class Hero implements Serializable {
     }
 
     
-    public int getRoundsPlayed() {
-        return roundsPlayed;
-    }
 
-    public void increaseRoundsPlayed() {
-        this.roundsPlayed++;
-    }
 
 }

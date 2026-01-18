@@ -1,3 +1,4 @@
+package app;
 
 import model.Hero;
 import model.HTWRoom;
@@ -18,15 +19,11 @@ public class EscapeGame implements Serializable {
     private final HTWRoom[] rooms = new HTWRoom[3];
     private boolean gameRunning = true;
     private boolean gameFinished = false;
-
+    
     Scanner scanner1 = new Scanner(System.in);
 
-
-    /**
-     * Konstruktoor für das Escape Game.
-     */
-    public EscapeGame() {
-        this.hero = new Hero();
+    public EscapeGame(Hero hero){
+        this.hero = hero;
     }
     
 
@@ -45,6 +42,7 @@ public class EscapeGame implements Serializable {
         System.out.println("What do you want to do next?");
         System.out.println("");
         System.out.println("=== Game Menu ===");
+        //Methode hinzufügen -> getRoundsPlayed()
         System.out.println("Round: " + hero.getRoundsPlayed());
         System.out.println("1. Exlore College");
         System.out.println("2. Show Hero Status");
@@ -122,17 +120,16 @@ public class EscapeGame implements Serializable {
      * fragt nutzer ob das spiel läuft.
      */
     public void run() {
-        if(hero.getName().equals("Blank Hero")) {
-            System.out.println("Welcome to HTW Escape Game!");
-            System.out.println("----------------------------");
-            System.out.println("What is your hero's name?");
-            hero.setName(scanner1.nextLine()); 
-        }
-        while (isGameRunning() && !isGameFinished()) {
+        System.out.println("Welcome to HTW Escape Game!");
+        System.out.println("----------------------------");
+        System.out.println("What is your hero's name?");
+
+        while (isGameRunning()) {
             printGameMenu();
             String choice = scanner1.nextLine();
             handleGameMenuInput(choice);
         }
+
     }
 
     /**
@@ -142,6 +139,4 @@ public class EscapeGame implements Serializable {
     public Hero getHero() {
         return hero;
     }
-
-
 }
