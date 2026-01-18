@@ -38,8 +38,8 @@ public class EscapeGame implements Serializable {
     
 
     public void intializeGame(){
-        System.out.println("Please enter your hero's name: ");
-        hero.setName(scanner1.nextLine());
+        //System.out.println("Please enter your hero's name: ");
+        //hero.setName(scanner1.nextLine());
 
     }
 
@@ -132,7 +132,7 @@ public class EscapeGame implements Serializable {
     public void exploreCollege(){
         hero.increaseRoundsPlayed();
         int currentRound = hero.getRoundsPlayed();
-        System.out.println("Exploring the college... This is round " + currentRound + ". You have (24 - " + currentRound + ") rounds left.");
+        System.out.println("Exploring the college... This is round " + currentRound + ". You have (" + (24 - currentRound) + ") rounds left.");
         
     
         System.out.println("====================");
@@ -151,7 +151,7 @@ public class EscapeGame implements Serializable {
             System.out.println("");
 
         }
-        else if (outcome < 0){
+        else if (outcome < 100){
             alienEncounter();
             /**System.out.println("You encounter an alien!");
             System.out.println("");*/
@@ -205,19 +205,29 @@ public class EscapeGame implements Serializable {
     public void handleChoiceFriendly(String choice){
         switch (choice) {
             case "1":
+                EscapeApp.clearConsole();
                 System.out.println("You give the alien a compliment and he seems pleased.");
                 System.out.println("You keep going on your way safely.");
                 System.out.println("");
                 break;
             case "2":
+                EscapeApp.clearConsole();
                 System.out.println("You decide to fight the alien!");
                 System.out.println("Kampfmechanik wird hier noch implementiert");
                 System.out.println("");
                 //kampfmechanik
                 break;
             default:
+                EscapeApp.clearConsole();
                 System.out.println("Invalid choice try again.");
                 System.out.println("");
+                System.out.println("The alien seems friendly how do you want to proceed?");
+                System.out.println("1. Give him a compliment and continue your way.");
+                System.out.println("2. Fight the alien.");
+                System.out.println("");
+                System.out.println("Please choose a number between 1 and 2 ");
+                String choiceFriendly = scanner1.nextLine();
+                handleChoiceFriendly(choiceFriendly);
                 break;
         }
     }
