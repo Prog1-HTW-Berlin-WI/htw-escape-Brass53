@@ -72,14 +72,16 @@ public class Hero implements Serializable {
     public void regenerate(String longRest){
         int heal;
 
-        if(longRest == "1"){
+        if(longRest == "2"){
             heal = 10;
             this.roundsPlayed += 1;
+            System.out.println("Long rest taken. 10 Health restored.");
         }
-        else if(longRest == "2"){
+        else if(longRest == "1"){
             if(smallRestUsed == false){
                 heal = 3;
                 this.smallRestUsed = true;
+                System.out.println("Small rest taken. 3 health restored.");
             }
             else{
                 System.out.println("Small rest already used in this level. No health restored.");
@@ -234,8 +236,7 @@ public class Hero implements Serializable {
         this.signedExerciseLeaders = signedExerciseLeaders;
     }
 
-    public void setLo
-    
+ 
 
 
 }
