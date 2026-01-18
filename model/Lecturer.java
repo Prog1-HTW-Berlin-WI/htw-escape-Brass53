@@ -44,6 +44,44 @@ public class Lecturer implements Serializable {
         }
     }
 
+     // Konstruktor
+    public Lecturer(String name) {
+        this.name = name;
+        this.hasSigned = false;
+        this.readyToSign = false;
+        this.dialogeCompleted = false;
+    }
+    // getter Methoden
+    public String getName() {
+        return this.name;
+    }
+
+    public boolean getHasSigned() {
+        return this.hasSigned;
+    }
+
+    public boolean getReadyToSign() {
+        return this.readyToSign;
+    }   
+    public boolean getDialogeCompleted() {
+        return this.dialogeCompleted;
+    }   
+
+    // setzt dialogeCompleted auf true (Dialoge abgeschlossen)
+    public void setDialogeCompleted(boolean completed) {
+        this.dialogeCompleted = completed;
+    }
+
+
+
+
+
+   // setzt readdyToSign auf true (ist bereit zu unterschreiben)
+    public void setReadyToSign(boolean ready) {
+        this.readyToSign = ready;
+    }
+
+
 
 
 
