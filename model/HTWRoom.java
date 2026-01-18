@@ -18,5 +18,32 @@ public class HTWRoom implements Serializable {
     private String description;
     private Lecturer lecturer;
 
+     public HTWRoom(String identifier, String description, Lecturer lecturer) {
+        this.identifier = identifier;
+        this.description = description;
+        this.lecturer = null;
+    }
+
+
+    // getter Methoden
+    public String getIdentifier() {
+        return identifier;
+    }
+    public String getDescription() {
+        return description;
+    }   
+    public Lecturer getLecturer() {
+        return lecturer;
+    }   
+
+    // setter Methoden
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
+    }
+
+
+
+
+
 
 }
