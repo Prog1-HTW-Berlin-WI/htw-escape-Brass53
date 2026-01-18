@@ -8,6 +8,7 @@ import model.FriendlyAlien;
 import model.HTWRoom;
 import model.Hero;
 import model.HostileAlien;
+import model.Lecturer;
 
 
 /**
@@ -30,6 +31,7 @@ public class EscapeGame implements Serializable {
 
     public EscapeGame(Hero hero){
         this.hero = hero;
+        initializeRooms();
     }
 
 
@@ -127,9 +129,6 @@ public class EscapeGame implements Serializable {
 
 
 
-
-
-
     public void exploreCollege(){
         hero.increaseRoundsPlayed();
         int currentRound = hero.getRoundsPlayed();
@@ -147,27 +146,26 @@ public class EscapeGame implements Serializable {
 
         int outcome = randomNumber.nextInt(100);
 
-        if (outcome < 20){
+        if (outcome < 0){
             System.out.println("You find nothing interesting during your exploration.");
             System.out.println("");
 
         }
-        else if (outcome < 72){
+        else if (outcome < 0){
             alienEncounter();
             /**System.out.println("You encounter an alien!");
             System.out.println("");*/
 
         }
         else{
-            /**int roomindex = randomNumber.nextInt(5);
+            int roomindex = randomNumber.nextInt(5);
             HTWRoom currentRoom = rooms[roomindex];
 
             String currentLecturerRoom = rooms[roomindex].getIdentifier();
             String currentLecturerName = rooms[roomindex].getLecturer().getName();
   
             System.out.println("You enter the Room " + currentLecturerRoom + " and see a lecturer.");
-            System.out.println(currentLecturerName + " gives you a signature for your routing sheet!");*/
-            System.out.println("Platzhalter");
+            System.out.println(currentLecturerName + " gives you a signature for your routing sheet!");
         }
 
     }
@@ -223,6 +221,38 @@ public class EscapeGame implements Serializable {
                 break;
         }
     }
+
+
+    private void initializeRooms(){
+        
+        this.rooms[0]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser"));
+        this.rooms[1]  = new HTWRoom("TA C 707", "IT-/Medien-Unterrichtsraum (Gebäude C)", new Lecturer("Frau Safitri"));
+        this.rooms[2]  = new HTWRoom("TA D 105", "Audimax / großer Veranstaltungsraum (Gebäude D)", new Lecturer("Vaseva"));
+        this.rooms[3]  = new HTWRoom("TA D 204", "Internetcafé im Mensagebäude (Gebäude D)", new Lecturer("Gärtner"));
+        this.rooms[4]  = new HTWRoom("TA A 024", "Seminar-/Unterrichtsraum (Gebäude A)", new Lecturer("Ganoui"));
+        this.rooms[5]  = new HTWRoom("TA A 021", "Seminarraum (Gebäude A)",null);
+        this.rooms[6]  = new HTWRoom("TA A 026", "Seminarraum (Gebäude A)",null);
+        this.rooms[7]  = new HTWRoom("TA A 003", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[8]  = new HTWRoom("TA A 118", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[9]  = new HTWRoom("TA A 124", "Seminar-/Unterrichtsraum (Gebäude A)",null);
+        this.rooms[10] = new HTWRoom("TA A 128", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[11] = new HTWRoom("TA A 130", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[12] = new HTWRoom("TA A 132", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[13] = new HTWRoom("TA A 134", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[14] = new HTWRoom("TA A 149", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[15] = new HTWRoom("TA A 219", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[16] = new HTWRoom("TA A 220", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[17] = new HTWRoom("TA A 239", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[18] = new HTWRoom("TA C 218", "Seminar-/Unterrichtsraum (Gebäude C)", null);
+        this.rooms[19] = new HTWRoom("TA C 729", "Seminar-/Unterrichtsraum (Gebäude C)", null);
+        this.rooms[20] = new HTWRoom("TA C 829", "Seminar-/Unterrichtsraum (Gebäude C)", null);
+        this.rooms[21] = new HTWRoom("TA A Cafeteria", "Cafeteria (Gebäude A)",  null);
+        this.rooms[22] = new HTWRoom("TA B Bibliothek-Ausleihe", "Bibliothek – Ausleihe (Gebäude B)" , null);
+        this.rooms[23] = new HTWRoom("TA D Mensa", "Mensa (Gebäude D)" , null);
+
+    }
+
+
 
     /**
      * Prüft ob das spiel läuft.
