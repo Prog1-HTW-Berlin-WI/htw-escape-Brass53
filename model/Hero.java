@@ -193,6 +193,10 @@ public class Hero implements Serializable {
         return this.roundsPlayed;
     }
 
+    public void increaseRoundsPlayed() {
+        ++this.roundsPlayed;
+    }
+
     public int getHealthpoints() {
         return this.healthpoints;
     }

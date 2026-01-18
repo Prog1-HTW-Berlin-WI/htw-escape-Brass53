@@ -7,7 +7,7 @@ package model;
  */
 
 
-public abstract class Alien {
+public abstract class Alien implements Serializable {
 
     private String name;
     private int lifePoints;
@@ -24,7 +24,7 @@ public abstract class Alien {
 
     //metthoden
 
-    private int takeDamage(int damage) {
+    public int takeDamage(int damage) {
         this.lifePoints -= damage;
         if (this.lifePoints < 0) {
             this.lifePoints = 0;
@@ -33,7 +33,7 @@ public abstract class Alien {
         return this.lifePoints;
     }
 
-    private boolean isDefeated() {
+    public boolean isDefeated() {
         return this.lifePoints <= 0;
     }
 
