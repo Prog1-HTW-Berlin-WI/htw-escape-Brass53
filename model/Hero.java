@@ -14,6 +14,7 @@ public class Hero implements Serializable {
     private int experiencePoints;
     private Lecturer[] signedExerciseLeaders;
 
+    private int roundsPlayed = 1;
     private boolean smallRestUsed = false;
 
     private static final int Max_HP = 50;
@@ -217,6 +218,12 @@ public class Hero implements Serializable {
     }
 
     
+    public int getRoundsPlayed() {
+        return roundsPlayed;
+    }
 
+    public void increaseRoundsPlayed() {
+        this.roundsPlayed++;
+    }
 
 }
