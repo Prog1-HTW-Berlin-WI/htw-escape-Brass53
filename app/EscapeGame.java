@@ -146,12 +146,12 @@ public class EscapeGame implements Serializable {
 
         int outcome = randomNumber.nextInt(100);
 
-        if (outcome < 0){
+        if (outcome < 20){
             System.out.println("You find nothing interesting during your exploration.");
             System.out.println("");
 
         }
-        else if (outcome < 100){
+        else if (outcome < 72){
             alienEncounter();
             /**System.out.println("You encounter an alien!");
             System.out.println("");*/
