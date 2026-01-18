@@ -57,6 +57,37 @@ public class EscapeGame implements Serializable {
 
     }
 
+    private void showHeroStatus(){
+        System.out.println("=== Hero Status ===");
+        System.out.println("Name: " + hero.getName());
+        System.out.println("Rounds Played: " + hero.getRoundsPlayed());
+        System.out.println("Health Points: " + hero.getHealthpoints());
+        System.out.println("Experience Points: " + hero.getExperiencePoints());
+        System.out.println("");
+
+    }
+
+    private void checkRoutingSheet(){
+        System.out.println("=== Routing Sheet ===");
+        System.out.println("Signatures Collected: " + hero.getSignedExerciseLeaders());
+        System.out.println("");
+
+    }
+
+    private void takeABreak(){
+        System.out.println("You take a break and recover some health points.");
+        System.out.println("for a short one press 1, for a long one press 2:");
+        String choice = scanner1.nextLine();
+        if (choice.equals("1")){
+            hero.regenerate("1");
+        } else if (choice.equals("2")){
+            hero.regenerate("2");
+        } else {
+            System.out.println("Invalid choice. No break taken.");
+        }    
+    
+    }
+
 
     /**
      * verarbeitet die eingabe im spielmenü.
@@ -68,10 +99,13 @@ public class EscapeGame implements Serializable {
                 exploreCollege();
                 break;
             case "2":
+                showHeroStatus();
                 break;
             case "3":
+                 checkRoutingSheet();
                 break;
             case "4":
+                takeABreak();
                 break;
             case "5":
                 setGameRunning(false);
@@ -108,7 +142,10 @@ public class EscapeGame implements Serializable {
     rooms[21] = new HTWRoom("TA A Cafeteria", "Cafeteria (Gebäude A)",  null);
     rooms[22] = new HTWRoom("TA B Bibliothek-Ausleihe", "Bibliothek – Ausleihe (Gebäude B)" , null);
     rooms[23] = new HTWRoom("TA D Mensa", "Mensa (Gebäude D)" , null);
-}
+    } 
+
+
+
 
 
 

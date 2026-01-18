@@ -69,23 +69,29 @@ public class Hero implements Serializable {
      */
 
 
-    private void regenerate(boolean longRest){
+    public void regenerate(String longRest){
         int heal;
 
-        if(longRest == true){
+        if(longRest == "1"){
             heal = 10;
             this.roundsPlayed += 1;
         }
-        else{
+        else if(longRest == "2"){
             if(smallRestUsed == false){
                 heal = 3;
                 this.smallRestUsed = true;
             }
             else{
+                System.out.println("Small rest already used in this level. No health restored.");
                 heal = 0;
             }
         
+    
         }
+        else{
+                System.out.println("Invalid rest type. No health restored.");
+                heal = 0;
+            }
         
 
         this.healthpoints += heal;
@@ -209,6 +215,7 @@ public class Hero implements Serializable {
         return this.experiencePoints;
     }
 
+
     //setter für name, healthpoints, signedExerciseLeaders experiencePoints
 
     public void setName(String name) {
@@ -227,6 +234,7 @@ public class Hero implements Serializable {
         this.signedExerciseLeaders = signedExerciseLeaders;
     }
 
+    public void setLo
     
 
 
