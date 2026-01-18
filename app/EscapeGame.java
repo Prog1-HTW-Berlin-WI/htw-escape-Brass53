@@ -134,9 +134,10 @@ public class EscapeGame implements Serializable {
         hero.increaseRoundsPlayed();
         int currentRound = hero.getRoundsPlayed();
         System.out.println("Exploring the college... This is round " + currentRound + ". You have (24 - " + currentRound + ") rounds left.");
-        System.out.println("");
+        
     
         System.out.println("====================");
+        System.out.println("");
 
         if (currentRound >= 24) {
             System.out.println("Your Time is up! You are stuck here and who knows what will happen to you...");
@@ -151,10 +152,10 @@ public class EscapeGame implements Serializable {
             System.out.println("");
 
         }
-        else if (outcome > 72){
-            /**alienEncounter();*/
-            System.out.println("You encounter an alien!");
-            System.out.println("");
+        else if (outcome < 72){
+            alienEncounter();
+            /**System.out.println("You encounter an alien!");
+            System.out.println("");*/
 
         }
         else{
@@ -166,6 +167,7 @@ public class EscapeGame implements Serializable {
   
             System.out.println("You enter the Room " + currentLecturerRoom + " and see a lecturer.");
             System.out.println(currentLecturerName + " gives you a signature for your routing sheet!");*/
+            System.out.println("Platzhalter");
         }
 
     }
@@ -191,12 +193,34 @@ public class EscapeGame implements Serializable {
             System.out.println("2. Fight the alien.");
             System.out.println("");
             System.out.println("Please choose a number between 1 and 2 ");
-            String userChoiceAlienEncounterFriendly = scanner1.nextLine();
+            String choiceFriendly = scanner1.nextLine();
+            handleChoiceFriendly(choiceFriendly);
         }
         else{
             System.out.println("The alien looks hostile and prepares to attack you!");
+            System.out.println("Kampfmechanik wird hier noch implementiert");
             System.out.println("");
             //kampfmechanik
+        }
+    }
+
+    public void handleChoiceFriendly(String choice){
+        switch (choice) {
+            case "1":
+                System.out.println("You give the alien a compliment and he seems pleased.");
+                System.out.println("You keep going on your way safely.");
+                System.out.println("");
+                break;
+            case "2":
+                System.out.println("You decide to fight the alien!");
+                System.out.println("Kampfmechanik wird hier noch implementiert");
+                System.out.println("");
+                //kampfmechanik
+                break;
+            default:
+                System.out.println("Invalid choice try again.");
+                System.out.println("");
+                break;
         }
     }
 
