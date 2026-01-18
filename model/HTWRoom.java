@@ -26,7 +26,7 @@ public class HTWRoom implements Serializable {
     public HTWRoom(String identifier, String description, Lecturer lecturer) {
         this.identifier = identifier;
         this.description = description;
-        this.lecturer = null;
+        this.lecturer = lecturer;
     }
 
     int explore = randomNumber.nextInt(rooms.length);
@@ -39,13 +39,13 @@ public class HTWRoom implements Serializable {
 
         if(viseteddRooms[roomindex] == false) {
             viseteddRooms[roomindex] = true;
-            rooms[0]  = new HTWRoom("TA A 021", "Seminarraum (Gebäude A)",null);
-            rooms[1]  = new HTWRoom("TA A 026", "Seminarraum (Gebäude A)",null);
-            rooms[2]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser"));
-            rooms[3]  = new HTWRoom("TA C 707", "IT-/Medien-Unterrichtsraum (Gebäude C)", new Lecturer("Frau Safitri"));
-            rooms[4]  = new HTWRoom("TA D 105", "Audimax / großer Veranstaltungsraum (Gebäude D)", new Lecturer("Vaseva"));
-            rooms[5]  = new HTWRoom("TA D 204", "Internetcafé im Mensagebäude (Gebäude D)", new Lecturer("Gärtner"));
-            rooms[6]  = new HTWRoom("TA A 024", "Seminar-/Unterrichtsraum (Gebäude A)", new Lecturer("Ganoui"));
+            rooms[0]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser"));
+            rooms[1]  = new HTWRoom("TA C 707", "IT-/Medien-Unterrichtsraum (Gebäude C)", new Lecturer("Frau Safitri"));
+            rooms[2]  = new HTWRoom("TA D 105", "Audimax / großer Veranstaltungsraum (Gebäude D)", new Lecturer("Vaseva"));
+            rooms[3]  = new HTWRoom("TA D 204", "Internetcafé im Mensagebäude (Gebäude D)", new Lecturer("Gärtner"));
+            rooms[4]  = new HTWRoom("TA A 024", "Seminar-/Unterrichtsraum (Gebäude A)", new Lecturer("Ganoui"));
+            rooms[5]  = new HTWRoom("TA A 021", "Seminarraum (Gebäude A)",null);
+            rooms[6]  = new HTWRoom("TA A 026", "Seminarraum (Gebäude A)",null);
             rooms[7]  = new HTWRoom("TA A 003", "Seminar-/Unterrichtsraum (Gebäude A)", null);
             rooms[8]  = new HTWRoom("TA A 118", "Seminar-/Unterrichtsraum (Gebäude A)", null);
             rooms[9]  = new HTWRoom("TA A 124", "Seminar-/Unterrichtsraum (Gebäude A)",null);

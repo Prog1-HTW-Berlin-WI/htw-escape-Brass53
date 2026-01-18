@@ -3,8 +3,11 @@ package app;
 import java.io.Serializable;
 import java.util.Random;
 import java.util.Scanner;
+import model.Alien;
+import model.FriendlyAlien;
 import model.HTWRoom;
 import model.Hero;
+import model.HostileAlien;
 
 
 /**
@@ -148,20 +151,54 @@ public class EscapeGame implements Serializable {
             System.out.println("");
 
         }
-        else if (outcome < 52 && outcome >= 20){
+        else if (outcome > 72){
             /**alienEncounter();*/
             System.out.println("You encounter an alien!");
             System.out.println("");
 
         }
         else{
-            /**lecturerEncounter();*/
-            System.out.println("You meet a lecturer who gives you a signature for your routing sheet!");
-            System.out.println("");
+            /**int roomindex = randomNumber.nextInt(5);
+            HTWRoom currentRoom = rooms[roomindex];
+
+            String currentLecturerRoom = rooms[roomindex].getIdentifier();
+            String currentLecturerName = rooms[roomindex].getLecturer().getName();
+  
+            System.out.println("You enter the Room " + currentLecturerRoom + " and see a lecturer.");
+            System.out.println(currentLecturerName + " gives you a signature for your routing sheet!");*/
         }
 
     }
 
+    public void alienEncounter(){
+        
+        Alien currentEnemy;
+
+        boolean alienDecider = randomNumber.nextBoolean();
+        if(alienDecider == true){
+            currentEnemy = new FriendlyAlien();
+        }
+        else{
+            currentEnemy = new HostileAlien();
+        }
+
+        System.out.println(currentEnemy.getName() + " steps forward!");
+        System.out.println(currentEnemy.getGreetings());
+
+        if(alienDecider == true){
+            System.out.println("The alien seems friendly how do you want to proceed?");
+            System.out.println("1. Give him a compliment and continue your way.");
+            System.out.println("2. Fight the alien.");
+            System.out.println("");
+            System.out.println("Please choose a number between 1 and 2 ");
+            String userChoiceAlienEncounterFriendly = scanner1.nextLine();
+        }
+        else{
+            System.out.println("The alien looks hostile and prepares to attack you!");
+            System.out.println("");
+            //kampfmechanik
+        }
+    }
 
     /**
      * Prüft ob das spiel läuft.
