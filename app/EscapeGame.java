@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.Scanner;
 import model.HTWRoom;
 import model.Hero;
-import model.Lecturer;
 
 
 /**
@@ -57,6 +56,7 @@ public class EscapeGame implements Serializable {
 
     }
 
+    //Zeigt den heldenstatus an.
     private void showHeroStatus(){
         System.out.println("=== Hero Status ===");
         System.out.println("Name: " + hero.getName());
@@ -67,6 +67,7 @@ public class EscapeGame implements Serializable {
 
     }
 
+    //zeigtt die routing sheet an.
     private void checkRoutingSheet(){
         System.out.println("=== Routing Sheet ===");
         System.out.println("Signatures Collected: " + hero.getSignedExerciseLeaders());
@@ -74,6 +75,7 @@ public class EscapeGame implements Serializable {
 
     }
 
+    //lässt den helden eine pause machen gibt ihn dadbei zwei optionen.
     private void takeABreak(){
         System.out.println("You take a break and recover some health points.");
         System.out.println("for a short one press 1, for a long one press 2:");
@@ -117,33 +119,6 @@ public class EscapeGame implements Serializable {
         }
     }
 
-    private void initRooms() {
-    rooms[0]  = new HTWRoom("TA A 021", "Seminarraum (Gebäude A)",null);
-    rooms[1]  = new HTWRoom("TA A 026", "Seminarraum (Gebäude A)",null);
-    rooms[2]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser"));
-    rooms[3]  = new HTWRoom("TA C 707", "IT-/Medien-Unterrichtsraum (Gebäude C)", new Lecturer("Frau Safitri"));
-    rooms[4]  = new HTWRoom("TA D 105", "Audimax / großer Veranstaltungsraum (Gebäude D)", new Lecturer("Vaseva"));
-    rooms[5]  = new HTWRoom("TA D 204", "Internetcafé im Mensagebäude (Gebäude D)", new Lecturer("Gärtner"));
-    rooms[6]  = new HTWRoom("TA A 024", "Seminar-/Unterrichtsraum (Gebäude A)", new Lecturer("Ganoui"));
-    rooms[7]  = new HTWRoom("TA A 003", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[8]  = new HTWRoom("TA A 118", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[9]  = new HTWRoom("TA A 124", "Seminar-/Unterrichtsraum (Gebäude A)",null);
-    rooms[10] = new HTWRoom("TA A 128", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[11] = new HTWRoom("TA A 130", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[12] = new HTWRoom("TA A 132", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[13] = new HTWRoom("TA A 134", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[14] = new HTWRoom("TA A 149", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[15] = new HTWRoom("TA A 219", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[16] = new HTWRoom("TA A 220", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[17] = new HTWRoom("TA A 239", "Seminar-/Unterrichtsraum (Gebäude A)", null);
-    rooms[18] = new HTWRoom("TA C 218", "Seminar-/Unterrichtsraum (Gebäude C)", null);
-    rooms[19] = new HTWRoom("TA C 729", "Seminar-/Unterrichtsraum (Gebäude C)", null);
-    rooms[20] = new HTWRoom("TA C 829", "Seminar-/Unterrichtsraum (Gebäude C)", null);
-    rooms[21] = new HTWRoom("TA A Cafeteria", "Cafeteria (Gebäude A)",  null);
-    rooms[22] = new HTWRoom("TA B Bibliothek-Ausleihe", "Bibliothek – Ausleihe (Gebäude B)" , null);
-    rooms[23] = new HTWRoom("TA D Mensa", "Mensa (Gebäude D)" , null);
-    } 
-
 
 
 
@@ -154,6 +129,9 @@ public class EscapeGame implements Serializable {
         hero.increaseRoundsPlayed();
         int currentRound = hero.getRoundsPlayed();
         System.out.println("Exploring the college... This is round " + currentRound + ". You have (24 - " + currentRound + ") rounds left.");
+        System.out.println("");
+        //System.out.println("While exploring you stumble in : ." + );
+    
         System.out.println("====================");
 
         if (currentRound >= 24) {
