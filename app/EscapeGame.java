@@ -1,9 +1,10 @@
 package app;
 
 import java.io.Serializable;
-import java.util.Scanner; 
+import java.util.Random;
+import java.util.Scanner;
 import model.HTWRoom;
-import model.Hero; 
+import model.Hero;
 
 
 /**
@@ -18,6 +19,7 @@ public class EscapeGame implements Serializable {
     private final HTWRoom[] rooms = new HTWRoom[3];
     private boolean gameRunning = true;
     private boolean gameFinished = false;
+    private Random randomNumber = new Random();
     
     Scanner scanner1 = new Scanner(System.in);
 
@@ -83,13 +85,34 @@ public class EscapeGame implements Serializable {
     public void exploreCollege(){
         hero.increaseRoundsPlayed();
         int currentRound = hero.getRoundsPlayed();
-        System.out.println("Exploring the college... This is round " + currentRound + ". You have (24 - currentRound) rounds left.");
+        System.out.println("Exploring the college... This is round " + currentRound + ". You have (24 - " + currentRound + ") rounds left.");
+        System.out.println("====================");
 
         if (currentRound >= 24) {
             System.out.println("Your Time is up! You are stuck here and who knows what will happen to you...");
             setGameFinished(true);
             setGameRunning(false);
         }
+
+        int outcome = randomNumber.nextInt(100);
+
+        if (outcome < 20){
+            System.out.println("You find nothing interesting during your exploration.");
+            System.out.println("");
+
+        }
+        else if (outcome < 52 && outcome >= 20){
+            /**alienEncounter();*/
+            System.out.println("You encounter an alien!");
+            System.out.println("");
+
+        }
+        else{
+            /**lecturerEncounter();*/
+            System.out.println("You meet a lecturer who gives you a signature for your routing sheet!");
+            System.out.println("");
+        }
+
     }
 
 
