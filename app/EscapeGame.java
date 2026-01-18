@@ -1,9 +1,9 @@
 package app;
 
-import model.Hero;
-import model.HTWRoom;
 import java.io.Serializable;
 import java.util.Scanner; 
+import model.HTWRoom;
+import model.Hero; 
 
 
 
@@ -120,10 +120,12 @@ public class EscapeGame implements Serializable {
      * fragt nutzer ob das spiel läuft.
      */
     public void run() {
-        System.out.println("Welcome to HTW Escape Game!");
-        System.out.println("----------------------------");
-        System.out.println("What is your hero's name?");
-
+        if(hero.getName().equals("Blank Hero")){
+            System.out.println("Welcome to HTW Escape Game!");
+            System.out.println("----------------------------");
+            System.out.println("What is your hero's name?");
+        }
+        
         while (isGameRunning()) {
             printGameMenu();
             String choice = scanner1.nextLine();
