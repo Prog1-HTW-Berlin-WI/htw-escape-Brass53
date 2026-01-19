@@ -53,50 +53,22 @@ public class EscapeGame implements Serializable {
         System.out.println("");
         System.out.println("=== Game Menu ===");
         System.out.println("Round: " + (hero.getRoundsPlayed() + 1));
-        System.out.println("1. Exlore College");
-        System.out.println("2. Show Hero Status");
-        System.out.println("3. Check Routing sheet");
-        System.out.println("4. Take a break");
-        System.out.println("5. Quit Game");
+        System.out.println("(1) Exlore College");
+        System.out.println("(2) Show Hero Status");
+        System.out.println("(3) Check Routing sheet");
+        System.out.println("(4) Take a break");
+        System.out.println("(5) Quit Game");
+        if(hero.isRoutingSheetComplete()){
+            System.out.println("(6) You have collected all signatures! One last challenge awaits you!");
+        }
         System.out.println("");
-        System.out.println("Please choose a number between 1 and 5: ");
-
-
-    }
-
-    //Zeigt den heldenstatus an.
-    private void showHeroStatus(){
-        System.out.println("=== Hero Status ===");
-        System.out.println("Name: " + hero.getName());
-        System.out.println("Rounds Played: " + hero.getRoundsPlayed());
-        System.out.println("Health Points: " + hero.getHealthpoints());
-        System.out.println("Experience Points: " + hero.getExperiencePoints());
-        System.out.println("");
-
-    }
-
-    //zeigtt die routing sheet an.
-    private void checkRoutingSheet(){
-        System.out.println("=== Routing Sheet ===");
-        System.out.println("Signatures Collected: " + hero.getSignedExerciseLeaders());
-        System.out.println("");
-
-    }
-
-    //lässt den helden eine pause machen gibt ihn dadbei zwei optionen.
-    private void takeABreak(){
-        System.out.println("You take a break and recover some health points.");
-        System.out.println("for a short one press 1, for a long one press 2:");
-        String choice = scanner1.nextLine();
-        if (choice.equals("1")){
-            hero.regenerate("1");
-        } else if (choice.equals("2")){
-            hero.regenerate("2");
+        if(hero.isRoutingSheetComplete()){
+            System.out.println("Please choose a number between 1 and 5: ");
         } else {
-            System.out.println("Invalid choice. No break taken.");
-        }    
-    
+            System.out.println("Please choose a number between 1 and 6: ");
+        }
     }
+
 
 
     /**
@@ -120,6 +92,12 @@ public class EscapeGame implements Serializable {
             case "5":
                 setGameRunning(false);
                 break;
+            case "6":
+                if(hero.isRoutingSheetComplete()){
+                    //MeetMajunkte(); erstellen
+                } else{
+                    System.out.println("You are not ready yet! Collect all signatures first.");
+                }
             default:
                 System.out.println("Invalid choice Try again.");
                 break;
@@ -127,6 +105,45 @@ public class EscapeGame implements Serializable {
         }
     }
 
+
+
+    //Zeigt den heldenstatus an.
+    private void showHeroStatus(){
+        System.out.println("=== Hero Status ===");
+        System.out.println("Name: " + hero.getName());
+        System.out.println("Rounds Played: " + hero.getRoundsPlayed());
+        System.out.println("Health Points: " + hero.getHealthpoints());
+        System.out.println("Experience Points: " + hero.getExperiencePoints());
+        System.out.println("");
+
+    }
+
+
+
+    //zeigtt die routing sheet an.
+    private void checkRoutingSheet(){
+        System.out.println("=== Routing Sheet ===");
+        System.out.println("Signatures Collected: " + hero.getSignedExerciseLeaders());
+        System.out.println("");
+
+    }
+
+
+
+    //lässt den helden eine pause machen gibt ihn dadbei zwei optionen.
+    private void takeABreak(){
+        System.out.println("You take a break and recover some health points.");
+        System.out.println("for a short one press 1, for a long one press 2:");
+        String choice = scanner1.nextLine();
+        if (choice.equals("1")){
+            hero.regenerate("1");
+        } else if (choice.equals("2")){
+            hero.regenerate("2");
+        } else {
+            System.out.println("Invalid choice. No break taken.");
+        }    
+    
+    }
 
 
 
