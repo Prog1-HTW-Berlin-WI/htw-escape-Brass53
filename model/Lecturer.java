@@ -18,6 +18,7 @@ public class Lecturer implements Serializable {
     private String name;
     private boolean hasSigned;
     private boolean readyToSign;
+    private String dialoge;
     // ob dialoge mit dem Dozenten abgeschlossen ist, danach kann der Spieler unterschreiben lassen.
     private boolean dialogeCompleted; 
 
@@ -45,11 +46,12 @@ public class Lecturer implements Serializable {
     }
 
      // Konstruktor
-    public Lecturer(String name) {
+    public Lecturer(String name, String dialoge){
         this.name = name;
         this.hasSigned = false;
         this.readyToSign = false;
         this.dialogeCompleted = false;
+        this.dialoge = dialoge;
     }
     // getter Methoden
     public String getName() {

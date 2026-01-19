@@ -13,7 +13,8 @@ public class Hero implements Serializable {
     private String name;
     private int healthpoints;
     private int experiencePoints;
-    private Lecturer[] signedExerciseLeaders;
+    private Lecturer[] signedExerciseLeadersList;
+    private Lecturer signedExerciseLeaders;
     private int roundsPlayed;
 
     private boolean smallRestUsed = false;
@@ -41,7 +42,7 @@ public class Hero implements Serializable {
         this.name = "Blank Hero";
         this.healthpoints = 50;
         this.experiencePoints = 0;
-        this.signedExerciseLeaders = new Lecturer[Signatures_Slots];
+        this.signedExerciseLeadersList = new Lecturer[Signatures_Slots];
         this.roundsPlayed = 0;
     }
 
@@ -148,15 +149,12 @@ public class Hero implements Serializable {
     /**
      * Lecturer wird in leere stelle des arrays signedExerciseLeaders eingetragen.
      * wwenn der lecturer schon eingetragen ist, passiert nichts.
-     * @param lecturer der lecturer der eingetragen werden soll.
+     * @param lecturerName der Name des Lecturers der eingetragen werden soll.
      */
     private void signExerciseLeader(Lecturer lecturer){
-        for(int i = 0; i < signedExerciseLeaders.length; i++){
-            if(signedExerciseLeaders[i].equals(lecturer)){
-                break;
-            }
-            else if(signedExerciseLeaders[i] == null){
-                signedExerciseLeaders[i] = lecturer;
+        for(int i = 0; i < signedExerciseLeadersList.length; i++){
+            if(signedExerciseLeadersList[i] == null){
+                signedExerciseLeadersList[i] = lecturer;
                 break;
             }
         }
@@ -209,14 +207,28 @@ public class Hero implements Serializable {
         return this.healthpoints;
     }
 
-    public Lecturer[] getSignedExerciseLeaders() {
-        return this.signedExerciseLeaders;
+    public String getSignedExerciseLeaders() {
+        String signatureList = "";
+        for(int i=0; i<this.signedExerciseLeadersList.length; i++){
+            if(this.signedExerciseLeadersList[i] != null){
+                signatureList = (signatureList + (this.signedExerciseLeadersList[i].getName()) + ", ");
+            }
+        }
+        return signatureList;
     }
 
     public int getExperience() {
         return this.experiencePoints;
     }
 
+    public boolean isRoutingSheetComplete() {
+        for(int i = 0; i < this.signedExerciseLeadersList.length; i++){
+            if(this.signedExerciseLeadersList[i] == null){
+                return false;
+            }
+        }
+        return true;
+    }
 
     //setter für name, healthpoints, signedExerciseLeaders experiencePoints
 
@@ -232,8 +244,13 @@ public class Hero implements Serializable {
         this.experiencePoints = experiencePoints;
     }
 
-    public void setSignedExerciseLeaders(Lecturer[] signedExerciseLeaders) {
-        this.signedExerciseLeaders = signedExerciseLeaders;
+    public void setSignedExerciseLeaders(Lecturer signedExerciseLeaders) {
+        for(int i = 0; i < signedExerciseLeadersList.length; i++){
+            if(signedExerciseLeadersList[i] == null){
+                signedExerciseLeadersList[i] = signedExerciseLeaders;
+                break;
+            }
+        }
     }
 
  

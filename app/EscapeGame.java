@@ -186,6 +186,7 @@ public class EscapeGame implements Serializable {
 
             System.out.println("You enter the Room " + currentLecturerRoom + " and see a lecturer.");
             System.out.println(currentLecturerName + " gives you a signature for your routing sheet!");
+            hero.setSignedExerciseLeaders(rooms[roomIndexLecturer].getLecturer());
         }
 
     }
@@ -268,11 +269,11 @@ public class EscapeGame implements Serializable {
 
     private void initializeRooms(){
         
-        this.rooms[0]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser"));
-        this.rooms[1]  = new HTWRoom("TA C 707", "IT-/Medien-Unterrichtsraum (Gebäude C)", new Lecturer("Frau Safitri"));
-        this.rooms[2]  = new HTWRoom("TA D 105", "Audimax / großer Veranstaltungsraum (Gebäude D)", new Lecturer("Vaseva"));
-        this.rooms[3]  = new HTWRoom("TA D 204", "Internetcafé im Mensagebäude (Gebäude D)", new Lecturer("Gärtner"));
-        this.rooms[4]  = new HTWRoom("TA A 024", "Seminar-/Unterrichtsraum (Gebäude A)", new Lecturer("Ganoui"));
+        this.rooms[0]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser", "Das kann man so machen, bis nächste Woche"));
+        this.rooms[1]  = new HTWRoom("TA C 707", "IT-/Medien-Unterrichtsraum (Gebäude C)", new Lecturer("Frau Safitri", "Das Wetter ist miserabel, du hättest zuhause bleiben sollen, nicht wahr?"));
+        this.rooms[2]  = new HTWRoom("TA D 105", "Audimax / großer Veranstaltungsraum (Gebäude D)", new Lecturer("Vaseva", "Dire fehlen noch UNterschirften nicht wahr?"));
+        this.rooms[3]  = new HTWRoom("TA D 204", "Internetcafé im Mensagebäude (Gebäude D)", new Lecturer("Gärtner", "Ich hatte doch extra gesagt über Zoom, du hättest dir das alles ersparen können."));
+        this.rooms[4]  = new HTWRoom("TA A 024", "Seminar-/Unterrichtsraum (Gebäude A)", new Lecturer("Ganoui", "Du bist spät dran, aber ich werde dir trotzdem eine Unterschrift geben."));
         this.rooms[5]  = new HTWRoom("TA A 021", "Seminarraum (Gebäude A)",null);
         this.rooms[6]  = new HTWRoom("TA A 026", "Seminarraum (Gebäude A)",null);
         this.rooms[7]  = new HTWRoom("TA A 003", "Seminar-/Unterrichtsraum (Gebäude A)", null);
