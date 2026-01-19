@@ -9,6 +9,7 @@ import model.HTWRoom;
 import model.Hero;
 import model.HostileAlien;
 import model.Lecturer;
+import model.ProfessorinMajuntke;
 
 
 /**
@@ -25,6 +26,7 @@ public class EscapeGame implements Serializable {
     private boolean gameRunning = true;
     private boolean gameFinished = false;
     private Random randomNumber = new Random();
+    private ProfessorinMajuntke majuntke = new ProfessorinMajuntke();
     
     Scanner scanner1 = new Scanner(System.in);
 
@@ -183,6 +185,20 @@ public class EscapeGame implements Serializable {
 
 
     public void exploreCollege(){
+
+        if(hero.getRoundsPlayed() >= 24){
+            System.out.println("You have no rounds left to explore the college.");
+            System.out.println("Its Game Over for you Prof. Majunkte left with he Rocket.");
+            setGameFinished(true);
+            setGameRunning(false);
+            return;
+        }
+        if(hero.isRoutingSheetComplete() == true){
+            majuntke.meetMajunke();
+            setGameFinished(true);
+            setGameRunning(false);
+            return;  
+        }
         hero.increaseRoundsPlayed();
         int currentRound = hero.getRoundsPlayed();
         System.out.println("Exploring the college... This is round " + currentRound + ". You have " + (24 - currentRound) + " rounds left.");
