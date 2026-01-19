@@ -191,12 +191,14 @@ public class EscapeGame implements Serializable {
             System.out.println("Its Game Over for you Prof. Majunkte left with he Rocket.");
             setGameFinished(true);
             setGameRunning(false);
+   
             return;
         }
         if(hero.isRoutingSheetComplete() == true){
             majuntke.meetMajunke();
             setGameFinished(true);
             setGameRunning(false);
+   
             return;  
         }
         hero.increaseRoundsPlayed();
