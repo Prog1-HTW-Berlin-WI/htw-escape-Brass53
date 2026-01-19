@@ -141,6 +141,7 @@ public class EscapeApp {
         System.out.println("Starting a new game...");
         System.out.println("Please enter your hero's name: ");
         String name = readUserInput();
+        clearConsole();
 
         if(name == null || name.trim().isEmpty()){
             name = "Blank";

@@ -20,7 +20,8 @@ import model.Lecturer;
 
 public class EscapeGame implements Serializable { 
     private final Hero hero;
-    private final HTWRoom[] rooms = new HTWRoom[24];
+    private final HTWRoom[] rooms = new HTWRoom[31];
+    private final boolean[] visitedRooms = new boolean[31];
     private boolean gameRunning = true;
     private boolean gameFinished = false;
     private Random randomNumber = new Random();
@@ -138,6 +139,9 @@ public class EscapeGame implements Serializable {
         System.out.println("====================");
         System.out.println("");
 
+        int roomIndex;
+        int roomIndexLecturer;
+
         if (currentRound >= 24) {
             System.out.println("Your Time is up! You are stuck here and who knows what will happen to you...");
             setGameFinished(true);
@@ -147,28 +151,51 @@ public class EscapeGame implements Serializable {
         int outcome = randomNumber.nextInt(100);
 
         if (outcome < 20){
-            System.out.println("You find nothing interesting during your exploration.");
+            do { 
+                roomIndex = randomNumber.nextInt(24);
+                roomIndex += 6;
+            } while (visitedRooms[roomIndex] == true);
+
+            wasInThisRoom(roomIndex);
+
+            System.out.println("You enter room " + rooms[roomIndex].getIdentifier() + " and find nothing interesting during your exploration.");
             System.out.println("");
 
         }
         else if (outcome < 72){
-            alienEncounter();
-            /**System.out.println("You encounter an alien!");
-            System.out.println("");*/
+            do { 
+                roomIndex = randomNumber.nextInt(24);
+                roomIndex += 6;
+            } while (visitedRooms[roomIndex] == true);
 
+            wasInThisRoom(roomIndex);
+
+            System.out.println("You enter room " + rooms[roomIndex].getIdentifier() + " and find something lurking in the shadows");
+
+            alienEncounter();
         }
         else{
-            int roomindex = randomNumber.nextInt(5);
-            HTWRoom currentRoom = rooms[roomindex];
+            do{
+                roomIndexLecturer = randomNumber.nextInt(5);
+            }while(visitedRooms[roomIndexLecturer] == true);
 
-            String currentLecturerRoom = rooms[roomindex].getIdentifier();
-            String currentLecturerName = rooms[roomindex].getLecturer().getName();
-  
+            wasInThisRoom(roomIndexLecturer);
+
+            String currentLecturerRoom = rooms[roomIndexLecturer].getIdentifier();
+            String currentLecturerName = rooms[roomIndexLecturer].getLecturer().getName();
+
             System.out.println("You enter the Room " + currentLecturerRoom + " and see a lecturer.");
             System.out.println(currentLecturerName + " gives you a signature for your routing sheet!");
         }
 
     }
+
+
+    public void wasInThisRoom(int roomIndex){
+        visitedRooms[roomIndex] = true;
+    }
+
+
 
     public void alienEncounter(){
         
@@ -184,11 +211,13 @@ public class EscapeGame implements Serializable {
 
         System.out.println(currentEnemy.getName() + " steps forward!");
         System.out.println(currentEnemy.getGreetings());
+        System.out.println("====================");
+        System.out.println("");
 
         if(alienDecider == true){
             System.out.println("The alien seems friendly how do you want to proceed?");
-            System.out.println("1. Give him a compliment and continue your way.");
-            System.out.println("2. Fight the alien.");
+            System.out.println("(1) Give him a compliment and continue your way.");
+            System.out.println("(2) Fight the alien.");
             System.out.println("");
             System.out.println("Please choose a number between 1 and 2 ");
             String choiceFriendly = scanner1.nextLine();
@@ -201,6 +230,9 @@ public class EscapeGame implements Serializable {
             //kampfmechanik
         }
     }
+
+
+
 
     public void handleChoiceFriendly(String choice){
         switch (choice) {
@@ -233,6 +265,7 @@ public class EscapeGame implements Serializable {
     }
 
 
+
     private void initializeRooms(){
         
         this.rooms[0]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser"));
@@ -259,6 +292,14 @@ public class EscapeGame implements Serializable {
         this.rooms[21] = new HTWRoom("TA A Cafeteria", "Cafeteria (Gebäude A)",  null);
         this.rooms[22] = new HTWRoom("TA B Bibliothek-Ausleihe", "Bibliothek – Ausleihe (Gebäude B)" , null);
         this.rooms[23] = new HTWRoom("TA D Mensa", "Mensa (Gebäude D)" , null);
+        this.rooms[24]  = new HTWRoom("TA A 218", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[25]  = new HTWRoom("TA A 234", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[26]  = new HTWRoom("TA A 232", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[27]  = new HTWRoom("TA A 249", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[28]  = new HTWRoom("TA A 224", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[29]  = new HTWRoom("TA A 228", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+        this.rooms[30]  = new HTWRoom("TA A 120", "Seminar-/Unterrichtsraum (Gebäude A)", null);
+
 
     }
 
