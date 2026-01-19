@@ -139,7 +139,7 @@ public class EscapeGame implements Serializable {
     //lässt den helden eine pause machen gibt ihn dadbei zwei optionen.
     private void takeABreak(){
         System.out.println("You take a break and recover some health points.");
-        System.out.println("(1) Short Break (3 HP");
+        System.out.println("(1) Short Break (3 HP)");
         System.out.println("(2) Long Break (10 HP, +1 Round Played)");
         System.out.println("(3) Cancel");
         System.out.println("");
@@ -254,14 +254,14 @@ public class EscapeGame implements Serializable {
         visitedRooms[roomIndex] = true;
     }
 
-
+    public boolean alienDecider(){
+        return randomNumber.nextBoolean();
+    }
 
     public void alienEncounter(){
-        
         Alien currentEnemy;
-
-        boolean alienDecider = randomNumber.nextBoolean();
-        if(alienDecider == true){
+        boolean alienDecision = alienDecider();
+        if(alienDecision == true){
             currentEnemy = new FriendlyAlien();
         }
         else{
@@ -274,7 +274,7 @@ public class EscapeGame implements Serializable {
         System.out.println("====================");
         System.out.println("");
 
-        if(alienDecider == true){
+        if(alienDecision == true){
             System.out.println("The alien seems friendly how do you want to proceed?");
             handleChoiceFriendly();
         }
@@ -307,7 +307,8 @@ public class EscapeGame implements Serializable {
             case "2":
                 EscapeApp.clearConsole();
                 System.out.println("You decide to fight the alien!");
-                System.out.println("Kampfmechanik wird hier noch implementiert");
+                System.out.println("===================");
+                fightLogic();
                 System.out.println("");
                 //kampfmechanik
                 break;
@@ -338,15 +339,20 @@ public class EscapeGame implements Serializable {
 
         switch (choice) {
             case "1":
+                System.out.println("You decided to fight the alien!");
+                System.out.println("");
                 fightLogic();
                 break;
             case "2":
-                if(fleeChance < 42){
+                boolean decision = hero.flee();
+                if(decision == true){
                     System.out.println("You were able to flee from the alien!");
                     break;
                 }
                 else{
                     System.out.println("You failed to flee from the alien!");
+                    System.out.println("You have to fight now!");
+                    System.out.println("");
                     fightLogic();
                     break;
                 }
@@ -357,7 +363,76 @@ public class EscapeGame implements Serializable {
     }
 
     private void fightLogic(){
-        
+        Alien currentEnemy;
+        boolean alienDecision = alienDecider();
+
+        if(alienDecision == true){
+            currentEnemy = new FriendlyAlien();
+        }
+        else{
+            currentEnemy = new HostileAlien();
+        }
+
+        while(currentEnemy.isDefeated() == false && hero.isOperational() == true){
+            System.out.println("=== Battle Menu ===");
+            currentEnemy.takeDamage(hero.attack());
+
+            if(currentEnemy.isDefeated() == true){
+                System.out.println("====================");
+                System.out.println("You have defeated the alien!");
+                System.out.println("You gain 5 experience points.");
+                System.out.println("");
+
+                hero.addExperiencePoints(5);
+                System.out.println("Press any button to continue");
+                String input = scanner1.nextLine();
+                EscapeApp.clearConsole();
+                switch (input) {
+                  default:
+                    break;
+                }
+                return;
+            }
+            
+
+            hero.takeDamageHero(currentEnemy.getDamage());
+            System.out.println("====================");
+
+            if(hero.isOperational() == false){
+                System.out.println("");
+                System.out.println("You have been defeated by the alien.");
+                System.out.println("You gain 1 experience point and your health points have been set to 10.");
+                System.out.println("You lost 2 hours, hurry up!");
+                System.out.println("");
+                hero.setHealthpoints(10);
+                hero.increaseRoundsPlayed();
+                hero.increaseRoundsPlayed();
+
+                if(hero.getRoundsPlayed() > 24){
+                    hero.setRoundsPlayed(24);
+                }
+
+                hero.addExperiencePoints(1);
+                System.out.println("Press any button to continue");
+                String input = scanner1.nextLine();
+                EscapeApp.clearConsole();
+                switch (input) {
+                  default:
+                    break;
+                }
+                return;
+            }
+
+            System.out.println("");
+            System.out.println("Press any button to continue");
+            String input = scanner1.nextLine();
+            EscapeApp.clearConsole();
+            switch (input) {
+                default:
+                    break;
+            }
+
+        }
     }
 
     private void initializeRooms(){

@@ -51,13 +51,15 @@ public class Hero implements Serializable {
      * take damage methode um schaden zu nehmen.
      * @param damage schaden der genommen wird.
      */
-
-
-    private void takeDamage(int amount){
+    public void takeDamageHero(int amount){
         this.healthpoints -= amount;
         if(this.healthpoints < 0){
             this.healthpoints = 0;
         }
+
+        System.out.println("You took " + amount + " damage. HP left: " + this.healthpoints);
+        System.out.println("");
+
     }
 
     /**
@@ -111,7 +113,7 @@ public class Hero implements Serializable {
      */
 
 
-    private boolean flee(){
+    public boolean flee(){
         int chance = this.random.nextInt(100);
         if (chance < 42){
             System.out.println("You successfully fled the battle!");
@@ -129,7 +131,7 @@ public class Hero implements Serializable {
      * @return schaden der verursacht wurde.
      */
 
-    private int attack(){
+    public int attack(){
         double baseDamage = this.experiencePoints * 2.3 + 1;
         int rollToHit = this.random.nextInt(100);
 
@@ -175,7 +177,7 @@ public class Hero implements Serializable {
      * variable experiencePoints muss definiert werden !!!
      */
 
-    private void addExperiencePoints(int xp){
+    public void addExperiencePoints(int xp){
         this.experiencePoints += xp;
     }
 
@@ -197,6 +199,10 @@ public class Hero implements Serializable {
 
     public int getRoundsPlayed() {
         return this.roundsPlayed;
+    }
+
+    public void setRoundsPlayed(int roundsPlayed) {
+        this.roundsPlayed = roundsPlayed;
     }
 
     public void increaseRoundsPlayed() {

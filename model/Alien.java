@@ -15,6 +15,7 @@ public abstract class Alien implements Serializable {
     private int lifePoints;
     private boolean friendly;
     private String greetings;
+    private int damage;
 
     // Bitte serialVersionUID beibehalten, damit die Klasse bei der
     // Speicherung als Datei (Serialisierung) und beim Laden (Deserialisierung)
@@ -27,6 +28,7 @@ public abstract class Alien implements Serializable {
         this.lifePoints = lifePoints;
         this.friendly = friendly;
         this.greetings = greetings;
+        this.damage = damage;
     }
 
     //metthoden
@@ -37,7 +39,9 @@ public abstract class Alien implements Serializable {
             this.lifePoints = 0;
         }
 
+        System.out.println("");
         System.out.println(this.name + " took " + damage + " damage. HP left: " + this.lifePoints);
+        System.out.println("");
     }
 
     public boolean isDefeated() {
@@ -52,5 +56,15 @@ public abstract class Alien implements Serializable {
         return this.greetings;
     }
     
+    public int getLifePoints() {
+        return this.lifePoints;
+    }
 
+    public void setDamage(int damage){
+        this.damage = damage;
+    }
+
+    public int getDamage(){
+        return this.damage;
+    }
 }
