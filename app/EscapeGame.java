@@ -129,9 +129,24 @@ public class EscapeGame implements Serializable {
     //zeigtt die routing sheet an.
     private void checkRoutingSheet(){
         System.out.println("=== Routing Sheet ===");
-        System.out.println("Signatures Collected: " + hero.getSignedExerciseLeaders());
-        System.out.println("");
 
+        String signedNames = hero.getSignedExerciseLeaders();
+        int missingCount = 0;
+        for (int i = 0; i < 5; i++) {
+            String lecturerName = rooms[i].getLecturer().getName();
+            if (signedNames.contains(lecturerName)) {
+                System.out.println("You have signature from: " + lecturerName);
+            }
+            else{
+                System.out.println("Missing signature from: " + lecturerName);
+                missingCount++;
+            }
+        }
+
+        
+
+
+      
     }
 
 

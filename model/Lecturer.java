@@ -53,6 +53,8 @@ public class Lecturer implements Serializable {
         this.dialogeCompleted = false;
         this.dialoge = dialoge;
     }
+
+    
     // getter Methoden
     public String getName() {
         return this.name;
