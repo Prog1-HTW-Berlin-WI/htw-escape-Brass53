@@ -73,12 +73,12 @@ public class Hero implements Serializable {
     public void regenerate(String longRest){
         int heal;
 
-        if(longRest == "2"){
+        if(longRest.equals("2")){
             heal = 10;
             this.roundsPlayed += 1;
             System.out.println("Long rest taken. 10 Health restored.");
         }
-        else if(longRest == "1"){
+        else if(longRest.equals("1")){
             if(smallRestUsed == false){
                 heal = 3;
                 this.smallRestUsed = true;
@@ -201,6 +201,7 @@ public class Hero implements Serializable {
 
     public void increaseRoundsPlayed() {
         ++this.roundsPlayed;
+        this.smallRestUsed = false;
     }
 
     public int getHealthpoints() {

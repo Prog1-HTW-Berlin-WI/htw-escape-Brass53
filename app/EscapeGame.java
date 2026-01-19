@@ -133,16 +133,30 @@ public class EscapeGame implements Serializable {
     //lässt den helden eine pause machen gibt ihn dadbei zwei optionen.
     private void takeABreak(){
         System.out.println("You take a break and recover some health points.");
-        System.out.println("for a short one press 1, for a long one press 2:");
+        System.out.println("(1) Short Break (3 HP");
+        System.out.println("(2) Long Break (10 HP, +1 Round Played)");
+        System.out.println("(3) Cancel");
+        System.out.println("");
+        System.out.println("Please choose a number between 1 and 3: ");
         String choice = scanner1.nextLine();
-        if (choice.equals("1")){
-            hero.regenerate("1");
-        } else if (choice.equals("2")){
-            hero.regenerate("2");
-        } else {
-            System.out.println("Invalid choice. No break taken.");
-        }    
-    
+        EscapeApp.clearConsole();
+       
+        switch (choice) {
+            case "1":
+                hero.regenerate("1");
+                break;
+            case "2":
+                hero.regenerate("2");
+                break;
+            case "3":
+                System.out.println("Break cancelled. No health restored.");
+                break;
+            default:
+                System.out.println("Invalid choice, Try again.");
+                System.out.println("");
+                takeABreak();
+                break;
+        }
     }
 
 
@@ -172,35 +186,27 @@ public class EscapeGame implements Serializable {
                 roomIndex = randomNumber.nextInt(24);
                 roomIndex += 6;
             } while (visitedRooms[roomIndex] == true);
-
             wasInThisRoom(roomIndex);
-
             System.out.println("You enter room " + rooms[roomIndex].getIdentifier() + " and find nothing interesting during your exploration.");
             System.out.println("");
-
         }
         else if (outcome < 72){
             do { 
                 roomIndex = randomNumber.nextInt(24);
                 roomIndex += 6;
             } while (visitedRooms[roomIndex] == true);
-
             wasInThisRoom(roomIndex);
-
             System.out.println("You enter room " + rooms[roomIndex].getIdentifier() + " and find something lurking in the shadows");
-
             alienEncounter();
         }
         else{
             do{
                 roomIndexLecturer = randomNumber.nextInt(5);
             }while(visitedRooms[roomIndexLecturer] == true);
-
             wasInThisRoom(roomIndexLecturer);
-
             String currentLecturerRoom = rooms[roomIndexLecturer].getIdentifier();
             String currentLecturerName = rooms[roomIndexLecturer].getLecturer().getName();
-
+            
             System.out.println("You enter the Room " + currentLecturerRoom + " and see a lecturer.");
             System.out.println(currentLecturerName + " gives you a signature for your routing sheet!");
             hero.setSignedExerciseLeaders(rooms[roomIndexLecturer].getLecturer());
