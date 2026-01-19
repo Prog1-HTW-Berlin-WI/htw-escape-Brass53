@@ -135,7 +135,7 @@ public class EscapeApp {
     }
 
     /**
-     * Startet ein neues spiel.
+     * erfragt den namen des helden und initialisiert das spiel.
      */
     private void startGame() {
         System.out.println("Starting a new game...");

@@ -67,6 +67,7 @@ public class Lecturer implements Serializable {
     public boolean getReadyToSign() {
         return this.readyToSign;
     }   
+    //WIERD NICHT GENUTZT !!!
     public boolean getDialogeCompleted() {
         return this.dialogeCompleted;
     }   

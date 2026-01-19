@@ -31,20 +31,16 @@ public class EscapeGame implements Serializable {
     Scanner scanner1 = new Scanner(System.in);
 
 
-
+    /**
+     * Konstruktor der EscapeGame Klasse.
+     * @param hero der held.
+     */
     public EscapeGame(Hero hero){
         this.hero = hero;
         initializeRooms();
     }
 
 
-    
-
-    public void intializeGame(){
-        //System.out.println("Please enter your hero's name: ");
-        //hero.setName(scanner1.nextLine());
-
-    }
 
 
     /**
@@ -60,16 +56,7 @@ public class EscapeGame implements Serializable {
         System.out.println("(3) Check Routing sheet");
         System.out.println("(4) Take a break");
         System.out.println("(5) Quit Game");
-        if(hero.isRoutingSheetComplete()){
-            System.out.println("");
-            System.out.println("(6) You have collected all signatures! One last challenge awaits you!");
-        }
         System.out.println("");
-        if(hero.isRoutingSheetComplete()){
-            System.out.println("Please choose a number between 1 and 5: ");
-        } else {
-            System.out.println("Please choose a number between 1 and 6: ");
-        }
     }
 
 
@@ -95,16 +82,9 @@ public class EscapeGame implements Serializable {
             case "5":
                 setGameRunning(false);
                 break;
-            case "6":
-                if(hero.isRoutingSheetComplete()){
-                    //MeetMajunkte(); erstellen
-                } else{
-                    System.out.println("You are not ready yet! Collect all signatures first.");
-                }
             default:
                 System.out.println("Invalid choice Try again.");
                 break;
-
         }
     }
 
@@ -282,15 +262,15 @@ public class EscapeGame implements Serializable {
 
     }
 
-
+    //markiert einen raum als besucht.
     public void wasInThisRoom(int roomIndex){
         visitedRooms[roomIndex] = true;
     }
-
+    //entscheidet ob der alien freundlich oder feindlich ist.
     public boolean alienDecider(){
         return randomNumber.nextBoolean();
     }
-
+    //begegnung mit einem alien.
     public void alienEncounter(){
         Alien currentEnemy;
         boolean alienDecision = alienDecider();
@@ -315,13 +295,13 @@ public class EscapeGame implements Serializable {
             System.out.println("The alien looks hostile and prepares to attack you!");
             fightOrFlee();
             System.out.println("");
-            //kampfmechanik
+
         }
     }
 
 
 
-
+    //verarbeitet die wahl bei einem freundlichen alien.
     public void handleChoiceFriendly(){
         System.out.println("(1) Give him a compliment and continue your way.");
         System.out.println("(2) Fight the alien.");
@@ -359,6 +339,7 @@ public class EscapeGame implements Serializable {
         }
     }
 
+    // KampfMenu/FluchtMenu
     private void fightOrFlee(){
         int fleeChance = randomNumber.nextInt(100);
         
@@ -395,6 +376,7 @@ public class EscapeGame implements Serializable {
         }
     }
 
+    // Kampfmechanik
     private void fightLogic(){
         Alien currentEnemy;
         boolean alienDecision = alienDecider();
@@ -467,7 +449,7 @@ public class EscapeGame implements Serializable {
 
         }
     }
-
+    // initialisiert die räume.
     private void initializeRooms(){
         
         this.rooms[0]  = new HTWRoom("TA A 027", "Seminarraum (Gebäude A)", new Lecturer("Herr Poeser", "Das kann man so machen, bis nächste Woche"));

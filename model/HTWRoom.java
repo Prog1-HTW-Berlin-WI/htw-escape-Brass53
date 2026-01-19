@@ -22,7 +22,10 @@ public class HTWRoom implements Serializable {
     private Random randomNumber = new Random();
     private boolean[]viseteddRooms = new boolean[24];
     
-
+    /** Konstruktor für HTW Räume.
+     * @param identifier der Raum Identifier.
+     * @param description die Raum Beschreibung.
+     * @param lecturer der Lecturer im Raum. */
     public HTWRoom(String identifier, String description, Lecturer lecturer) {
         this.identifier = identifier;
         this.description = description;
@@ -32,6 +35,7 @@ public class HTWRoom implements Serializable {
     int explore = randomNumber.nextInt(rooms.length);
     }
 
+    //wird nicht genutzt !!!
     /**private HTWRoom[] initRooms() {
 
         int roomindex = 0;

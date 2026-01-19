@@ -149,18 +149,19 @@ public class Hero implements Serializable {
     }
 
     /**
+     * WIERD NICHT GENUTZT !!!
      * Lecturer wird in leere stelle des arrays signedExerciseLeaders eingetragen.
      * wwenn der lecturer schon eingetragen ist, passiert nichts.
      * @param lecturerName der Name des Lecturers der eingetragen werden soll.
      */
-    private void signExerciseLeader(Lecturer lecturer){
-        for(int i = 0; i < signedExerciseLeadersList.length; i++){
-            if(signedExerciseLeadersList[i] == null){
-                signedExerciseLeadersList[i] = lecturer;
-                break;
-            }
-        }
-    }
+    //private void signExerciseLeader(Lecturer lecturer){
+    //    for(int i = 0; i < signedExerciseLeadersList.length; i++){
+    //        if(signedExerciseLeadersList[i] == null){
+    //            signedExerciseLeadersList[i] = lecturer;
+    //           break;
+    //        }
+    //    }
+    //}
 
     /**
      * Gibt die aktuellen Erfahrungspunkte zurück.
