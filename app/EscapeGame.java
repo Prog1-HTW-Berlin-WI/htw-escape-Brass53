@@ -59,6 +59,7 @@ public class EscapeGame implements Serializable {
         System.out.println("(4) Take a break");
         System.out.println("(5) Quit Game");
         if(hero.isRoutingSheetComplete()){
+            System.out.println("");
             System.out.println("(6) You have collected all signatures! One last challenge awaits you!");
         }
         System.out.println("");
@@ -109,7 +110,12 @@ public class EscapeGame implements Serializable {
 
     //Zeigt den heldenstatus an.
     private void showHeroStatus(){
+        if(hero.getRoundsPlayed() == 24){
+            System.out.println("=== Final Status ===");
+        }
+        else{
         System.out.println("=== Hero Status ===");
+        }   
         System.out.println("Name: " + hero.getName());
         System.out.println("Rounds Played: " + hero.getRoundsPlayed());
         System.out.println("Health Points: " + hero.getHealthpoints());
@@ -164,7 +170,7 @@ public class EscapeGame implements Serializable {
     public void exploreCollege(){
         hero.increaseRoundsPlayed();
         int currentRound = hero.getRoundsPlayed();
-        System.out.println("Exploring the college... This is round " + currentRound + ". You have (" + (24 - currentRound) + ") rounds left.");
+        System.out.println("Exploring the college... This is round " + currentRound + ". You have " + (24 - currentRound) + " rounds left.");
         
     
         System.out.println("====================");
@@ -175,8 +181,24 @@ public class EscapeGame implements Serializable {
 
         if (currentRound >= 24) {
             System.out.println("Your Time is up! You are stuck here and who knows what will happen to you...");
+            System.out.println("Game Over!");
+            System.out.println("");
+            this.showHeroStatus();
+            System.out.println("(1) Return to Main Menu");
+
+            switch (scanner1.nextLine()) {
+                case "1":
+                    EscapeApp.clearConsole();
+                    break;
+                default:
+                    System.out.println("Invalid choice, try again.");
+                    EscapeApp.clearConsole();
+                    exploreCollege();
+                    break;
+            }
             setGameFinished(true);
             setGameRunning(false);
+            return;
         }
 
         int outcome = randomNumber.nextInt(100);
@@ -200,9 +222,22 @@ public class EscapeGame implements Serializable {
             alienEncounter();
         }
         else{
+            int index = 0;
+            for(int i=0; i<5; i++){
+                if(visitedRooms[i] == true){
+                    index++;
+                }
+                if(index ==5){
+                    System.out.println("You have already collected all signatures.");
+                    System.out.println("You should check your Options in the Game Menu.");
+                    return;
+                }
+            }
+
             do{
                 roomIndexLecturer = randomNumber.nextInt(5);
             }while(visitedRooms[roomIndexLecturer] == true);
+            
             wasInThisRoom(roomIndexLecturer);
             String currentLecturerRoom = rooms[roomIndexLecturer].getIdentifier();
             String currentLecturerName = rooms[roomIndexLecturer].getLecturer().getName();
@@ -235,21 +270,17 @@ public class EscapeGame implements Serializable {
 
         System.out.println(currentEnemy.getName() + " steps forward!");
         System.out.println(currentEnemy.getGreetings());
+        System.out.println("");
         System.out.println("====================");
         System.out.println("");
 
         if(alienDecider == true){
             System.out.println("The alien seems friendly how do you want to proceed?");
-            System.out.println("(1) Give him a compliment and continue your way.");
-            System.out.println("(2) Fight the alien.");
-            System.out.println("");
-            System.out.println("Please choose a number between 1 and 2 ");
-            String choiceFriendly = scanner1.nextLine();
-            handleChoiceFriendly(choiceFriendly);
+            handleChoiceFriendly();
         }
         else{
             System.out.println("The alien looks hostile and prepares to attack you!");
-            System.out.println("Kampfmechanik wird hier noch implementiert");
+            fightOrFlee();
             System.out.println("");
             //kampfmechanik
         }
@@ -258,8 +289,15 @@ public class EscapeGame implements Serializable {
 
 
 
-    public void handleChoiceFriendly(String choice){
-        switch (choice) {
+    public void handleChoiceFriendly(){
+        System.out.println("(1) Give him a compliment and continue your way.");
+        System.out.println("(2) Fight the alien.");
+        System.out.println("");
+        System.out.println("Please choose a number between 1 and 2 ");
+        String choiceFriendly = scanner1.nextLine();
+        
+        
+        switch (choiceFriendly) {
             case "1":
                 EscapeApp.clearConsole();
                 System.out.println("You give the alien a compliment and he seems pleased.");
@@ -277,18 +315,50 @@ public class EscapeGame implements Serializable {
                 EscapeApp.clearConsole();
                 System.out.println("Invalid choice try again.");
                 System.out.println("");
-                System.out.println("The alien seems friendly how do you want to proceed?");
+                /**System.out.println("The alien seems friendly how do you want to proceed?");
                 System.out.println("1. Give him a compliment and continue your way.");
                 System.out.println("2. Fight the alien.");
                 System.out.println("");
-                System.out.println("Please choose a number between 1 and 2 ");
-                String choiceFriendly = scanner1.nextLine();
-                handleChoiceFriendly(choiceFriendly);
+                System.out.println("Please choose a number between 1 and 2 ");*/
+                handleChoiceFriendly();
                 break;
         }
     }
 
+    private void fightOrFlee(){
+        int fleeChance = randomNumber.nextInt(100);
+        
+        System.out.println("Do you want to fight the alien or try to flee?");
+        System.out.println("(1) Fight");
+        System.out.println("(2) Flee");
+        System.out.println("");
+        System.out.println("Please choose a number between 1 and 2: ");
+        String choice = scanner1.nextLine();
+        EscapeApp.clearConsole();
 
+        switch (choice) {
+            case "1":
+                fightLogic();
+                break;
+            case "2":
+                if(fleeChance < 42){
+                    System.out.println("You were able to flee from the alien!");
+                    break;
+                }
+                else{
+                    System.out.println("You failed to flee from the alien!");
+                    fightLogic();
+                    break;
+                }
+            default:
+                System.out.println("Invalid choice, Try again.");
+                fightOrFlee();
+        }
+    }
+
+    private void fightLogic(){
+        
+    }
 
     private void initializeRooms(){
         

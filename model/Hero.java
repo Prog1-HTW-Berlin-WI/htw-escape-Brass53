@@ -41,7 +41,7 @@ public class Hero implements Serializable {
     public Hero(){
         this.name = "Blank Hero";
         this.healthpoints = 50;
-        this.experiencePoints = 0;
+        this.experiencePoints = 1;
         this.signedExerciseLeadersList = new Lecturer[Signatures_Slots];
         this.roundsPlayed = 0;
     }

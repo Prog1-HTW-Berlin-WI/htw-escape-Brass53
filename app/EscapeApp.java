@@ -140,6 +140,7 @@ public class EscapeApp {
     private void startGame() {
         System.out.println("Starting a new game...");
         System.out.println("Please enter your hero's name: ");
+        System.out.print("> ");
         String name = readUserInput();
         clearConsole();
 
