@@ -1,9 +1,21 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ProfessorinMajuntke {
+/**
+ * Klasse für Professorin Majuntke, die letzte Hürde vor dem Abschluss.
+ * @author Berkant Kaygan
+ * @author Luca Weber
+ */
+
+
+
+
+public class ProfessorinMajuntke implements Serializable{
+
+    private static final long serialVersionUID = 540082607047283589L;
 
     private Random randomNumber = new Random();
 
