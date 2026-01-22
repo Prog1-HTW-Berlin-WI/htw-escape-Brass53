@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;  
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 import model.Hero;
 
@@ -18,7 +18,7 @@ public class EscapeApp {
 
     public static final String SAVE_FILE_NAME = "save";
     private EscapeGame game;
-    private boolean gameRunning = true;
+    private final boolean gameRunning = true;
     private final Scanner scanner = new Scanner(System.in);
 
 

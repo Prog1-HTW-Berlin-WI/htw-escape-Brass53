@@ -13,14 +13,14 @@ public class Hero implements Serializable {
     private String name;
     private int healthpoints;
     private int experiencePoints;
-    private Lecturer[] signedExerciseLeadersList;
+    private final Lecturer[] signedExerciseLeadersList;
     private Lecturer signedExerciseLeaders;
     private int roundsPlayed;
 
     private boolean smallRestUsed = false;
 
-    private static final int Max_HP = 50;
-    private static final int Signatures_Slots = 5;
+    private static final int MAX_HP = 50;
+    private static final int SIGNATURES_SLOTS = 5;
 
 
     /**
@@ -42,7 +42,7 @@ public class Hero implements Serializable {
         this.name = "Blank Hero";
         this.healthpoints = 50;
         this.experiencePoints = 1;
-        this.signedExerciseLeadersList = new Lecturer[Signatures_Slots];
+        this.signedExerciseLeadersList = new Lecturer[SIGNATURES_SLOTS];
         this.roundsPlayed = 0;
     }
 
@@ -100,8 +100,8 @@ public class Hero implements Serializable {
         
 
         this.healthpoints += heal;
-        if(this.healthpoints > Max_HP){
-            this.healthpoints = Max_HP;
+        if(this.healthpoints > MAX_HP){
+            this.healthpoints = MAX_HP;
         }
     }
 

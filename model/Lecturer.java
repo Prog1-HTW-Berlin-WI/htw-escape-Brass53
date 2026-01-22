@@ -15,10 +15,10 @@ public class Lecturer implements Serializable {
     // konsistent bleibt und Versionierungsprobleme vermieden werden.
     private static final long serialVersionUID = 540082607047283589L;
 
-    private String name;
+    private final String name;
     private boolean hasSigned;
     private boolean readyToSign;
-    private String dialoge;
+    private final String dialoge;
     // ob dialoge mit dem Dozenten abgeschlossen ist, danach kann der Spieler unterschreiben lassen.
     private boolean dialogeCompleted; 
 

@@ -7,7 +7,7 @@ public class HostileAlien extends Alien{
 
     // Konstruktor für feindlichen Alien.
     public HostileAlien(){
-        super("'Grumpy'", 35, false, "\"You're not supposed to be here, little human!\"");
+        super("'Grumpy'", 35, "\"You're not supposed to be here, little human!\"");
         setDamage(random.nextInt(10) + 1);
     }
 }

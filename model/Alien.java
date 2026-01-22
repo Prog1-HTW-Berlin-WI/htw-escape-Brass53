@@ -11,10 +11,9 @@ import java.io.Serializable;
 
 public abstract class Alien implements Serializable {
 
-    private String name;
+    private final String name;
     private int lifePoints;
-    private boolean friendly;
-    private String greetings;
+    private final String greetings;
     private int damage;
 
     // Bitte serialVersionUID beibehalten, damit die Klasse bei der
@@ -23,10 +22,9 @@ public abstract class Alien implements Serializable {
     private static final long serialVersionUID = 1729389822767173584L;
 
 
-    public Alien(String name, int lifePoints, boolean friendly, String greetings){
+    public Alien(String name, int lifePoints, String greetings){
         this.name = name;
         this.lifePoints = lifePoints;
-        this.friendly = friendly;
         this.greetings = greetings;
         this.damage = damage;
     }
