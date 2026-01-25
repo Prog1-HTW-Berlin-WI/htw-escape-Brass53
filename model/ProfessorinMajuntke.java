@@ -44,7 +44,7 @@ public class ProfessorinMajuntke implements Serializable{
 
         
 
-        while (score < 2) {
+        while (score < 1) {
             
             int r = randomNumber.nextInt(3);
 
